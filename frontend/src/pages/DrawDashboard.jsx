@@ -72,11 +72,11 @@ const playSound = (type) => {
       playNote(392.00, now, 0.12, 0.04);          // Ta (G4)
       playNote(392.00, now + 0.12, 0.12, 0.04);   // Da (G4)
       
-      // Congrats Chord! (extended to 2.5s)
-      playNote(523.25, now + 0.24, 2.5, 0.06);    // C5
-      playNote(659.25, now + 0.24, 2.5, 0.04);    // E5
-      playNote(783.99, now + 0.24, 2.5, 0.04);    // G5
-      playNote(1046.50, now + 0.24, 2.5, 0.03);   // C6 (high sparkling bell tone)
+      // Congrats Chord! (extended to 4.0s for longer celebratory ring)
+      playNote(523.25, now + 0.24, 4.0, 0.06);    // C5
+      playNote(659.25, now + 0.24, 4.0, 0.04);    // E5
+      playNote(783.99, now + 0.24, 4.0, 0.04);    // G5
+      playNote(1046.50, now + 0.24, 4.0, 0.03);   // C6 (high sparkling bell tone)
     }
   } catch (e) {
     console.warn("Audio failed", e);
@@ -345,7 +345,6 @@ const DrawDashboard = () => {
 
   return (
     <div className={`draw-layout dark-theme draw-layout-${sport}`}>
-      {drawState === 'SLOT_REVEALED' && <div className="screen-flash"></div>}
       {/* Ambient background particles & glows */}
       <div className="ambient-glow glow-1"></div>
       <div className="ambient-glow glow-2"></div>
