@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Confetti from 'react-confetti';
 import { ArrowLeft, Calendar, Clock, RotateCcw, Download, Info, Trophy } from 'lucide-react';
@@ -321,6 +321,7 @@ const DrawDashboard = () => {
   const [selectedTeam, setSelectedTeam] = useState(null);
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [lastAssignedSlot, setLastAssignedSlot] = useState(null);
+  const timerRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => setWindowDimension({ width: window.innerWidth, height: window.innerHeight });
@@ -382,13 +383,14 @@ const DrawDashboard = () => {
         if (currentStep > 10) {
           nextDelay = 35 + Math.pow(currentStep - 10, 1.85) * 9;
         }
-        setTimeout(() => roll(currentStep + 1, nextDelay), delay);
+        timerRef.current = setTimeout(() => roll(currentStep + 1, nextDelay), delay);
       } else {
         const finalIdx = Math.floor(Math.random() * unassignedTeams.length);
         const finalTeam = unassignedTeams[finalIdx];
         setDisplayTeam(finalTeam);
         setSelectedTeam(finalTeam);
         setDrawState('TEAM_REVEALED');
+        timerRef.current = null;
       }
     };
     
@@ -413,7 +415,7 @@ const DrawDashboard = () => {
         if (currentStep > 10) {
           nextDelay = 35 + Math.pow(currentStep - 10, 1.85) * 9;
         }
-        setTimeout(() => roll(currentStep + 1, nextDelay), delay);
+        timerRef.current = setTimeout(() => roll(currentStep + 1, nextDelay), delay);
       } else {
         const finalIdx = Math.floor(Math.random() * availableSlots.length);
         const finalSlot = availableSlots[finalIdx]; 
@@ -440,6 +442,7 @@ const DrawDashboard = () => {
         
         setDrawState('SLOT_REVEALED');
         playSound('reveal');
+        timerRef.current = null;
       }
     };
     
@@ -487,41 +490,147 @@ const DrawDashboard = () => {
     setDrawState('IDLE');
   };
 
-  const instantDrawOne = () => {
-    if (unassignedTeams.length === 0 || availableSlots.length === 0) return;
+  const handleShortcutN = () => {
+    // 1. Clear active animation timers
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
     
-    const teamIdx = Math.floor(Math.random() * unassignedTeams.length);
-    const team = unassignedTeams[teamIdx];
-    
-    const slotIdx = Math.floor(Math.random() * availableSlots.length);
-    const slot = availableSlots[slotIdx];
-    
-    setAssigned(prev => {
-      const next = { ...prev, [slot]: team };
-      localStorage.setItem(`draw_assigned_${sport}`, JSON.stringify(next));
-      return next;
-    });
-    setLastAssignedSlot(slot);
-    
-    setUnassignedTeams(prev => {
-      const next = prev.filter(t => t.id !== team.id);
-      localStorage.setItem(`draw_unassigned_${sport}`, JSON.stringify(next));
-      return next;
-    });
-    setAvailableSlots(prev => {
-      const next = prev.filter(s => s !== slot);
-      localStorage.setItem(`draw_slots_${sport}`, JSON.stringify(next));
-      return next;
-    });
-    
-    setSelectedTeam(null);
-    setSelectedSlot(null);
-    setDrawState('IDLE');
-    
-    if (unassignedTeams.length === 1) {
+    // 2. Decide action based on current state
+    if (drawState === 'RANDOMIZING_TEAM') {
+      if (unassignedTeams.length === 0) return;
+      const finalIdx = Math.floor(Math.random() * unassignedTeams.length);
+      const finalTeam = unassignedTeams[finalIdx];
+      setDisplayTeam(finalTeam);
+      setSelectedTeam(finalTeam);
+      setDrawState('TEAM_REVEALED');
+    } 
+    else if (drawState === 'RANDOMIZING_SLOT') {
+      if (availableSlots.length === 0 || !selectedTeam) return;
+      const finalIdx = Math.floor(Math.random() * availableSlots.length);
+      const finalSlot = availableSlots[finalIdx];
+      
+      setDisplaySlot(finalSlot);
+      setSelectedSlot(finalSlot);
+      
+      setAssigned(prev => {
+        const next = { ...prev, [finalSlot]: selectedTeam };
+        localStorage.setItem(`draw_assigned_${sport}`, JSON.stringify(next));
+        return next;
+      });
+      setUnassignedTeams(prev => {
+        const next = prev.filter(t => t.id !== selectedTeam.id);
+        localStorage.setItem(`draw_unassigned_${sport}`, JSON.stringify(next));
+        return next;
+      });
+      setAvailableSlots(prev => {
+        const next = prev.filter(s => s !== finalSlot);
+        localStorage.setItem(`draw_slots_${sport}`, JSON.stringify(next));
+        return next;
+      });
+      setLastAssignedSlot(finalSlot);
+      setDrawState('SLOT_REVEALED');
       playSound('reveal');
-    } else {
-      playSound('click');
+    }
+    else if (drawState === 'IDLE') {
+      if (unassignedTeams.length === 0 || availableSlots.length === 0) return;
+      
+      const teamIdx = Math.floor(Math.random() * unassignedTeams.length);
+      const team = unassignedTeams[teamIdx];
+      
+      const slotIdx = Math.floor(Math.random() * availableSlots.length);
+      const slot = availableSlots[slotIdx];
+      
+      setDisplayTeam(team);
+      setSelectedTeam(team);
+      setDisplaySlot(slot);
+      setSelectedSlot(slot);
+      
+      setAssigned(prev => {
+        const next = { ...prev, [slot]: team };
+        localStorage.setItem(`draw_assigned_${sport}`, JSON.stringify(next));
+        return next;
+      });
+      setUnassignedTeams(prev => {
+        const next = prev.filter(t => t.id !== team.id);
+        localStorage.setItem(`draw_unassigned_${sport}`, JSON.stringify(next));
+        return next;
+      });
+      setAvailableSlots(prev => {
+        const next = prev.filter(s => s !== slot);
+        localStorage.setItem(`draw_slots_${sport}`, JSON.stringify(next));
+        return next;
+      });
+      setLastAssignedSlot(slot);
+      setDrawState('SLOT_REVEALED');
+      playSound('reveal');
+    }
+    else if (drawState === 'TEAM_REVEALED') {
+      if (availableSlots.length === 0 || !selectedTeam) return;
+      
+      const slotIdx = Math.floor(Math.random() * availableSlots.length);
+      const slot = availableSlots[slotIdx];
+      
+      setDisplaySlot(slot);
+      setSelectedSlot(slot);
+      
+      setAssigned(prev => {
+        const next = { ...prev, [slot]: selectedTeam };
+        localStorage.setItem(`draw_assigned_${sport}`, JSON.stringify(next));
+        return next;
+      });
+      setUnassignedTeams(prev => {
+        const next = prev.filter(t => t.id !== selectedTeam.id);
+        localStorage.setItem(`draw_unassigned_${sport}`, JSON.stringify(next));
+        return next;
+      });
+      setAvailableSlots(prev => {
+        const next = prev.filter(s => s !== slot);
+        localStorage.setItem(`draw_slots_${sport}`, JSON.stringify(next));
+        return next;
+      });
+      setLastAssignedSlot(slot);
+      setDrawState('SLOT_REVEALED');
+      playSound('reveal');
+    }
+    else if (drawState === 'SLOT_REVEALED') {
+      const currentUnassigned = unassignedTeams;
+      if (currentUnassigned.length === 0) {
+        setSelectedTeam(null);
+        setSelectedSlot(null);
+        setDrawState('IDLE');
+      } else {
+        const teamIdx = Math.floor(Math.random() * currentUnassigned.length);
+        const team = currentUnassigned[teamIdx];
+        
+        const slotIdx = Math.floor(Math.random() * availableSlots.length);
+        const slot = availableSlots[slotIdx];
+        
+        setDisplayTeam(team);
+        setSelectedTeam(team);
+        setDisplaySlot(slot);
+        setSelectedSlot(slot);
+        
+        setAssigned(prev => {
+          const next = { ...prev, [slot]: team };
+          localStorage.setItem(`draw_assigned_${sport}`, JSON.stringify(next));
+          return next;
+        });
+        setUnassignedTeams(prev => {
+          const next = prev.filter(t => t.id !== team.id);
+          localStorage.setItem(`draw_unassigned_${sport}`, JSON.stringify(next));
+          return next;
+        });
+        setAvailableSlots(prev => {
+          const next = prev.filter(s => s !== slot);
+          localStorage.setItem(`draw_slots_${sport}`, JSON.stringify(next));
+          return next;
+        });
+        setLastAssignedSlot(slot);
+        setDrawState('SLOT_REVEALED');
+        playSound('reveal');
+      }
     }
   };
 
@@ -531,12 +640,12 @@ const DrawDashboard = () => {
         if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') {
           return;
         }
-        instantDrawOne();
+        handleShortcutN();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [unassignedTeams, availableSlots]);
+  }, [drawState, unassignedTeams, availableSlots, selectedTeam]);
 
   return (
     <div className={`draw-layout dark-theme draw-layout-${sport}`}>
