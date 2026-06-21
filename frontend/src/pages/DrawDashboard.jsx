@@ -68,15 +68,15 @@ const playSound = (type) => {
         subOsc.stop(start + duration);
       };
       
-      // "Ta-Da!" fanfare timing: G4 -> G4 -> C major chord
-      playNote(392.00, now, 0.10, 0.04);          // Ta (G4)
-      playNote(392.00, now + 0.10, 0.10, 0.04);   // Da (G4)
+      // "Ta-Da!" fanfare timing: G4 -> G4 -> C major chord (longer sustain)
+      playNote(392.00, now, 0.12, 0.04);          // Ta (G4)
+      playNote(392.00, now + 0.12, 0.12, 0.04);   // Da (G4)
       
-      // Congrats Chord!
-      playNote(523.25, now + 0.20, 1.5, 0.06);    // C5
-      playNote(659.25, now + 0.20, 1.5, 0.04);    // E5
-      playNote(783.99, now + 0.20, 1.5, 0.04);    // G5
-      playNote(1046.50, now + 0.20, 1.5, 0.03);   // C6 (high sparkling bell tone)
+      // Congrats Chord! (extended to 2.5s)
+      playNote(523.25, now + 0.24, 2.5, 0.06);    // C5
+      playNote(659.25, now + 0.24, 2.5, 0.04);    // E5
+      playNote(783.99, now + 0.24, 2.5, 0.04);    // G5
+      playNote(1046.50, now + 0.24, 2.5, 0.03);   // C6 (high sparkling bell tone)
     }
   } catch (e) {
     console.warn("Audio failed", e);

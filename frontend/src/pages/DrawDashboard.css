@@ -537,7 +537,7 @@
   line-height: 1;
   color: #ffffff;
   gap: 0.05em;
-  animation: tada-pop 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: tada-pop 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 @keyframes tada-pop {
@@ -545,17 +545,23 @@
     transform: scale(0.3);
     opacity: 0;
   }
-  35% {
-    transform: scale(1.18) rotate(-4deg);
-    filter: brightness(1.3);
+  15% {
+    transform: scale(1.22) rotate(-6deg);
+    filter: brightness(1.4);
   }
-  50% {
-    transform: scale(0.96) rotate(3deg);
+  30% {
+    transform: scale(0.92) rotate(5deg);
   }
-  65% {
-    transform: scale(1.06) rotate(-2deg);
+  45% {
+    transform: scale(1.12) rotate(-4deg);
   }
-  80% {
+  60% {
+    transform: scale(0.95) rotate(3deg);
+  }
+  75% {
+    transform: scale(1.05) rotate(-2deg);
+  }
+  90% {
     transform: scale(0.98) rotate(1deg);
   }
   100% {
