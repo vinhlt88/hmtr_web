@@ -57,7 +57,7 @@ const Home = () => {
     {
       id: 'womens_football',
       name: 'Bóng Đá Nữ',
-      desc: '8 Đội • 2 Bảng',
+      desc: '11 Đội • 2 Bảng',
       icon: <Trophy size={40} />,
       accent: 'blue',
       category: 'football',

@@ -23,14 +23,17 @@ export const MOCK_TEAMS = {
     { id: 'm21', name: 'Khối 11' },
   ],
   womens_football: [
-    { id: 'w1', name: 'Nữ Khoá 2005' },
-    { id: 'w2', name: 'Nữ Khoá 2006' },
-    { id: 'w3', name: 'Nữ Khoá 2007' },
-    { id: 'w4', name: 'Nữ Khoá 2008' },
-    { id: 'w5', name: 'Nữ Khoá 2009' },
-    { id: 'w6', name: 'Nữ Khoá 2010' },
-    { id: 'w7', name: 'Nữ Khoá 2011' },
-    { id: 'w8', name: 'Nữ Khoá 2012' },
+    { id: 'w1', name: 'Khoá 2006' },
+    { id: 'w2', name: 'Khoá 2008' },
+    { id: 'w3', name: 'Khoá 2009' },
+    { id: 'w4', name: 'Khoá 2010' },
+    { id: 'w5', name: 'Khoá 2012' },
+    { id: 'w6', name: 'Khoá 2013' },
+    { id: 'w7', name: 'Khoá 2016' },
+    { id: 'w8', name: 'Khoá 2017' },
+    { id: 'w9', name: 'Khoá 2018' },
+    { id: 'w10', name: 'Khoá 2019' },
+    { id: 'w11', name: 'Khoá 2026' }
   ],
   badminton_male: [
     { id: 'bm1', name: 'Shark - Thành Đức' },
@@ -99,8 +102,8 @@ export const MOCK_GROUPS = {
     { id: 'E', name: 'Bảng E', capacity: 4 },
   ],
   womens_football: [
-    { id: 'A', name: 'Bảng A', capacity: 4 },
-    { id: 'B', name: 'Bảng B', capacity: 4 },
+    { id: 'A', name: 'Bảng A', capacity: 6 },
+    { id: 'B', name: 'Bảng B', capacity: 5 },
   ],
   badminton_male: [
     { id: 'A', name: 'Bảng A', capacity: 3 },
