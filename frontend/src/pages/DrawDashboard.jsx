@@ -42,20 +42,20 @@ const playSound = (type) => {
       osc.start(now);
       osc.stop(now + 0.03);
     } else if (type === 'reveal') {
-      // Warm, majestic triumphant chime arpeggio (C major chord)
+      // Classic triumphant "Ta-Da!" fanfare
       const playNote = (freq, start, duration, volume = 0.05) => {
         const osc = ctx.createOscillator();
         const subOsc = ctx.createOscillator();
         const gainNode = ctx.createGain();
         
-        osc.type = 'triangle'; // Warm woodwind/brass tone
+        osc.type = 'triangle'; // Warm synth brass tone
         osc.frequency.setValueAtTime(freq, start);
         
-        subOsc.type = 'sine'; // Soft fundamental tone
+        subOsc.type = 'sine'; // Pure base body
         subOsc.frequency.setValueAtTime(freq, start);
         
         gainNode.gain.setValueAtTime(0, start);
-        gainNode.gain.linearRampToValueAtTime(volume, start + 0.06); // Smooth attack
+        gainNode.gain.linearRampToValueAtTime(volume, start + 0.02); // Fast attack for tada pop
         gainNode.gain.exponentialRampToValueAtTime(0.001, start + duration);
         
         osc.connect(gainNode);
@@ -68,12 +68,15 @@ const playSound = (type) => {
         subOsc.stop(start + duration);
       };
       
-      // Harmonies played with soft attack and decay
-      playNote(261.63, now, 0.6, 0.04);        // C4
-      playNote(329.63, now + 0.08, 0.6, 0.04); // E4
-      playNote(392.00, now + 0.16, 0.6, 0.04); // G4
-      playNote(523.25, now + 0.24, 1.2, 0.06); // C5
-      playNote(659.25, now + 0.32, 1.2, 0.04); // E5
+      // "Ta-Da!" fanfare timing: G4 -> G4 -> C major chord
+      playNote(392.00, now, 0.10, 0.04);          // Ta (G4)
+      playNote(392.00, now + 0.10, 0.10, 0.04);   // Da (G4)
+      
+      // Congrats Chord!
+      playNote(523.25, now + 0.20, 1.5, 0.06);    // C5
+      playNote(659.25, now + 0.20, 1.5, 0.04);    // E5
+      playNote(783.99, now + 0.20, 1.5, 0.04);    // G5
+      playNote(1046.50, now + 0.20, 1.5, 0.03);   // C6 (high sparkling bell tone)
     }
   } catch (e) {
     console.warn("Audio failed", e);
