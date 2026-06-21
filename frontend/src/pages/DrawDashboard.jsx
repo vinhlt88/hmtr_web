@@ -25,51 +25,55 @@ const playSound = (type) => {
     const now = ctx.currentTime;
     
     if (type === 'click') {
+      // Soft mechanical click - warm and low pitch to build tension without harshness
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
+      
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(250, now);
+      osc.frequency.exponentialRampToValueAtTime(80, now + 0.03);
+      
+      gain.gain.setValueAtTime(0.04, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.03);
+      
       osc.connect(gain);
       gain.connect(ctx.destination);
-      osc.frequency.setValueAtTime(800, now);
-      gain.gain.setValueAtTime(0.08, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
+      
       osc.start(now);
-      osc.stop(now + 0.04);
+      osc.stop(now + 0.03);
     } else if (type === 'reveal') {
-      const playTrumpet = (freq, start, duration, volume = 0.08) => {
-        const osc1 = ctx.createOscillator();
-        const osc2 = ctx.createOscillator(); 
+      // Warm, majestic triumphant chime arpeggio (C major chord)
+      const playNote = (freq, start, duration, volume = 0.05) => {
+        const osc = ctx.createOscillator();
+        const subOsc = ctx.createOscillator();
         const gainNode = ctx.createGain();
-        osc1.type = 'sawtooth';
-        osc2.type = 'sawtooth';
-        osc1.frequency.setValueAtTime(freq, start);
-        osc2.frequency.setValueAtTime(freq + 3, start); 
+        
+        osc.type = 'triangle'; // Warm woodwind/brass tone
+        osc.frequency.setValueAtTime(freq, start);
+        
+        subOsc.type = 'sine'; // Soft fundamental tone
+        subOsc.frequency.setValueAtTime(freq, start);
+        
         gainNode.gain.setValueAtTime(0, start);
-        gainNode.gain.linearRampToValueAtTime(volume, start + 0.05); 
-        gainNode.gain.setValueAtTime(volume, start + duration - 0.1);
-        gainNode.gain.exponentialRampToValueAtTime(0.001, start + duration); 
-        osc1.connect(gainNode);
-        osc2.connect(gainNode);
+        gainNode.gain.linearRampToValueAtTime(volume, start + 0.06); // Smooth attack
+        gainNode.gain.exponentialRampToValueAtTime(0.001, start + duration);
+        
+        osc.connect(gainNode);
+        subOsc.connect(gainNode);
         gainNode.connect(ctx.destination);
-        osc1.start(start);
-        osc1.stop(start + duration);
-        osc2.start(start);
-        osc2.stop(start + duration);
+        
+        osc.start(start);
+        osc.stop(start + duration);
+        subOsc.start(start);
+        subOsc.stop(start + duration);
       };
       
-      playTrumpet(261.63, now, 0.25, 0.08);  // C4
-      playTrumpet(329.63, now, 0.25, 0.08);  // E4
-      playTrumpet(392.00, now, 0.25, 0.08);  // G4
-      playTrumpet(523.25, now + 0.25, 1.5, 0.14);  // C5
-    } else if (type === 'tension') {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.frequency.setValueAtTime(90, now);
-      gain.gain.setValueAtTime(0.15, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
-      osc.start(now);
-      osc.stop(now + 0.15);
+      // Harmonies played with soft attack and decay
+      playNote(261.63, now, 0.6, 0.04);        // C4
+      playNote(329.63, now + 0.08, 0.6, 0.04); // E4
+      playNote(392.00, now + 0.16, 0.6, 0.04); // G4
+      playNote(523.25, now + 0.24, 1.2, 0.06); // C5
+      playNote(659.25, now + 0.32, 1.2, 0.04); // E5
     }
   } catch (e) {
     console.warn("Audio failed", e);
@@ -303,7 +307,7 @@ const DrawDashboard = () => {
                   {sport.includes('badminton') ? 'Cặp đấu tiếp theo:' : 'Đội bóng tiếp theo:'}
                 </p>
                 <h2 className="revealed-text">{selectedTeam?.name}</h2>
-                <button className="huge-btn mt-4" onClick={handleDrawSlot}>BỐC VỊ TRÍ</button>
+                <button className="huge-btn mt-4" onClick={handleDrawSlot}>BỐC THĂM</button>
               </div>
             )}
 
@@ -317,7 +321,7 @@ const DrawDashboard = () => {
               <div className="slot-reveal-container">
                 <div className="revealed-card">
                   <p className="revealed-team-title">
-                    {sport.includes('badminton') ? 'CẶP ĐẤU' : 'ĐỘI BÓNG'} {selectedTeam?.name?.toUpperCase()} VÀO VỊ TRÍ:
+                    {sport.includes('badminton') ? 'CẶP ĐẤU' : 'ĐỘI BÓNG'} {selectedTeam?.name?.toUpperCase()}
                   </p>
                   <div className="slot-result-card">
                     <span className="group-letter">{selectedSlot?.charAt(0)}</span>

@@ -532,10 +532,11 @@
   font-size: 11rem;
   font-weight: 950;
   background: rgba(10, 14, 28, 0.8);
-  padding: 0.5rem 4.5rem;
+  padding: 0.8rem 4rem;
   border-radius: 32px;
-  line-height: 0.8;
+  line-height: 1;
   color: #ffffff;
+  gap: 0.05em;
 }
 
 .draw-layout-mens_football .slot-result-card {
@@ -950,7 +951,7 @@
   .revealed-text { font-size: 2.5rem; }
   
   .slot-reveal-container { gap: 0.8rem; }
-  .slot-result-card { font-size: 6.5rem; border-radius: 20px; padding: 0.2rem 2.5rem; border-width: 3px; }
+  .slot-result-card { font-size: 6.5rem; border-radius: 20px; padding: 0.4rem 2.5rem; border-width: 3px; }
   
   .board-header { padding: 0.8rem; }
   .board-header h2 { font-size: 0.9rem; }
