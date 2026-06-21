@@ -108,9 +108,18 @@ const DrawDashboard = () => {
     }
   });
 
-  const [unassignedTeams, setUnassignedTeams] = useState(initialTeams);
-  const [availableSlots, setAvailableSlots] = useState(allSlots);
-  const [assigned, setAssigned] = useState({}); 
+  const [unassignedTeams, setUnassignedTeams] = useState(() => {
+    const saved = localStorage.getItem(`draw_unassigned_${sport}`);
+    return saved ? JSON.parse(saved) : initialTeams;
+  });
+  const [availableSlots, setAvailableSlots] = useState(() => {
+    const saved = localStorage.getItem(`draw_slots_${sport}`);
+    return saved ? JSON.parse(saved) : allSlots;
+  });
+  const [assigned, setAssigned] = useState(() => {
+    const saved = localStorage.getItem(`draw_assigned_${sport}`);
+    return saved ? JSON.parse(saved) : {};
+  }); 
   const [drawState, setDrawState] = useState('IDLE'); 
   const [displayTeam, setDisplayTeam] = useState(null);
   const [displaySlot, setDisplaySlot] = useState(null);
@@ -187,9 +196,21 @@ const DrawDashboard = () => {
         setDisplaySlot(finalSlot);
         setSelectedSlot(finalSlot);
         
-        setAssigned(prev => ({ ...prev, [finalSlot]: selectedTeam }));
-        setUnassignedTeams(prev => prev.filter(t => t.id !== selectedTeam.id));
-        setAvailableSlots(prev => prev.filter(s => s !== finalSlot));
+        setAssigned(prev => {
+          const next = { ...prev, [finalSlot]: selectedTeam };
+          localStorage.setItem(`draw_assigned_${sport}`, JSON.stringify(next));
+          return next;
+        });
+        setUnassignedTeams(prev => {
+          const next = prev.filter(t => t.id !== selectedTeam.id);
+          localStorage.setItem(`draw_unassigned_${sport}`, JSON.stringify(next));
+          return next;
+        });
+        setAvailableSlots(prev => {
+          const next = prev.filter(s => s !== finalSlot);
+          localStorage.setItem(`draw_slots_${sport}`, JSON.stringify(next));
+          return next;
+        });
         setLastAssignedSlot(finalSlot);
         
         setDrawState('SLOT_REVEALED');
@@ -213,6 +234,9 @@ const DrawDashboard = () => {
         setSelectedSlot(null);
         setLastAssignedSlot(null);
         localStorage.removeItem(`draw_completed_${sport}`);
+        localStorage.removeItem(`draw_assigned_${sport}`);
+        localStorage.removeItem(`draw_unassigned_${sport}`);
+        localStorage.removeItem(`draw_slots_${sport}`);
       }
     }
   };
@@ -247,11 +271,23 @@ const DrawDashboard = () => {
     const slotIdx = Math.floor(Math.random() * availableSlots.length);
     const slot = availableSlots[slotIdx];
     
-    setAssigned(prev => ({ ...prev, [slot]: team }));
+    setAssigned(prev => {
+      const next = { ...prev, [slot]: team };
+      localStorage.setItem(`draw_assigned_${sport}`, JSON.stringify(next));
+      return next;
+    });
     setLastAssignedSlot(slot);
     
-    setUnassignedTeams(prev => prev.filter(t => t.id !== team.id));
-    setAvailableSlots(prev => prev.filter(s => s !== slot));
+    setUnassignedTeams(prev => {
+      const next = prev.filter(t => t.id !== team.id);
+      localStorage.setItem(`draw_unassigned_${sport}`, JSON.stringify(next));
+      return next;
+    });
+    setAvailableSlots(prev => {
+      const next = prev.filter(s => s !== slot);
+      localStorage.setItem(`draw_slots_${sport}`, JSON.stringify(next));
+      return next;
+    });
     
     setSelectedTeam(null);
     setSelectedSlot(null);

@@ -120,6 +120,9 @@ const Home = () => {
     if (window.confirm('Đặt lại toàn bộ tiến trình bốc thăm? (Tất cả các môn sẽ quay lại trạng thái chờ bốc thăm)')) {
       sportsOrder.forEach(sport => {
         localStorage.removeItem(`draw_completed_${sport.id}`);
+        localStorage.removeItem(`draw_assigned_${sport.id}`);
+        localStorage.removeItem(`draw_unassigned_${sport.id}`);
+        localStorage.removeItem(`draw_slots_${sport.id}`);
       });
       loadProgress();
     }
