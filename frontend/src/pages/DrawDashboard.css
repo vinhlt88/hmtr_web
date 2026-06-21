@@ -440,6 +440,13 @@
   margin-top: 1rem;
 }
 
+.finished-actions .huge-btn {
+  font-size: 1.25rem;
+  padding: 0.9rem 2.2rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
 .home-btn {
   background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%) !important;
   box-shadow: 
@@ -982,6 +989,10 @@
   .bottom-bar { height: 95px; padding: 0 3rem; gap: 2rem; }
   .bottom-label { font-size: 1.05rem; }
   .team-pill { font-size: 1rem; padding: 0.55rem 1.4rem; }
+  .finished-actions .huge-btn {
+    font-size: 1.6rem;
+    padding: 1.2rem 3rem;
+  }
 }
 
 /* Low-height laptop optimization */
@@ -1019,4 +1030,8 @@
   .bottom-bar { height: 60px; padding: 0 1rem; border-radius: 12px; gap: 0.8rem; }
   .bottom-label { font-size: 0.7rem; }
   .team-pill { font-size: 0.7rem; padding: 0.25rem 0.6rem; }
+  .finished-actions .huge-btn {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.5rem;
+  }
 }

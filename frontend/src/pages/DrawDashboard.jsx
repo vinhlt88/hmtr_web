@@ -332,7 +332,7 @@ const DrawDashboard = () => {
                 <p className="finished-subtitle">Bảng đấu đã được thiết lập thành công</p>
                 <div className="finished-actions">
                   <button className="huge-btn download-btn" onClick={exportResults}>
-                    <Download size={32} className="download-icon" /> TẢI FILE EXCEL
+                    <Download size={22} className="download-icon" /> TẢI FILE EXCEL
                   </button>
                   <button className="huge-btn home-btn" onClick={() => navigate('/')}>
                     KẾT THÚC BỐC THĂM
