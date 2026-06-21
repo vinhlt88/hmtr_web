@@ -238,6 +238,45 @@ const DrawDashboard = () => {
     setDrawState('IDLE');
   };
 
+  const instantDrawOne = () => {
+    if (unassignedTeams.length === 0 || availableSlots.length === 0) return;
+    
+    const teamIdx = Math.floor(Math.random() * unassignedTeams.length);
+    const team = unassignedTeams[teamIdx];
+    
+    const slotIdx = Math.floor(Math.random() * availableSlots.length);
+    const slot = availableSlots[slotIdx];
+    
+    setAssigned(prev => ({ ...prev, [slot]: team }));
+    setLastAssignedSlot(slot);
+    
+    setUnassignedTeams(prev => prev.filter(t => t.id !== team.id));
+    setAvailableSlots(prev => prev.filter(s => s !== slot));
+    
+    setSelectedTeam(null);
+    setSelectedSlot(null);
+    setDrawState('IDLE');
+    
+    if (unassignedTeams.length === 1) {
+      playSound('reveal');
+    } else {
+      playSound('click');
+    }
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'n' || e.key === 'N') {
+        if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') {
+          return;
+        }
+        instantDrawOne();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [unassignedTeams, availableSlots]);
+
   return (
     <div className={`draw-layout dark-theme draw-layout-${sport}`}>
       {/* Ambient background particles & glows */}
