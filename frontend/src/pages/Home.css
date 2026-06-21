@@ -89,10 +89,11 @@
 
 .header-top-line {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 2rem;
-  margin-bottom: 0.5rem;
+  width: 100%;
+  max-width: 1680px;
+  margin: 0 auto 0.5rem auto;
   position: relative;
 }
 
@@ -109,6 +110,60 @@
   font-weight: 800;
   letter-spacing: 2px;
   box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+}
+
+.header-admin-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.free-draw-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  padding: 0.35rem 1.1rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.free-draw-toggle-btn .toggle-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #64748b;
+  box-shadow: 0 0 4px #64748b;
+  transition: all 0.3s ease;
+}
+
+/* Free draw button active style */
+.free-draw-toggle-btn.active-mode {
+  border-color: rgba(255, 190, 11, 0.4);
+  color: var(--neon-gold);
+  background: rgba(255, 190, 11, 0.1);
+  box-shadow: 
+    0 0 15px rgba(255, 190, 11, 0.25),
+    inset 0 0 5px rgba(255, 190, 11, 0.1);
+  animation: glow-pulse-yellow 3s infinite ease-in-out;
+}
+
+.free-draw-toggle-btn.active-mode .toggle-dot {
+  background-color: #ffbe0b;
+  box-shadow: 0 0 10px #ffbe0b, 0 0 20px #ffbe0b;
+  animation: blink 1.2s infinite ease-in-out;
+}
+
+.free-draw-toggle-btn:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
 }
 
 .reset-progress-btn {
@@ -334,6 +389,28 @@
   transform: translateY(-3px);
 }
 
+/* Special Free Draw State */
+.roadmap-card.state-free {
+  opacity: 0.8;
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(20, 27, 54, 0.45);
+}
+
+.roadmap-card.state-free:hover {
+  opacity: 1;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px);
+}
+
+.icon-free-draw {
+  color: var(--neon-gold);
+  filter: drop-shadow(0 0 5px rgba(255, 190, 11, 0.4));
+  animation: blink 2s infinite ease-in-out;
+}
+
 /* Active card neon glows */
 .roadmap-card.state-active {
   background: rgba(18, 25, 51, 0.85);
@@ -475,7 +552,7 @@
 }
 
 /* Card Footers */
-.card-footer-action, .card-footer-completed {
+.card-footer-action, .card-footer-completed, .card-footer-free {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -506,6 +583,20 @@
   background: rgba(16, 185, 129, 0.08);
   border: 1px solid rgba(16, 185, 129, 0.2);
   color: #34d399;
+}
+
+.card-footer-free {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.state-free:hover .card-footer-free {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
 .arrow-icon {
@@ -638,6 +729,10 @@
   .sub-title-gold { font-size: 4.8rem; }
   .draw-title-glow { font-size: 1.6rem; padding: 0.5rem 3.5rem; }
   
+  .header-top-line { max-width: 1720px; }
+  .free-draw-toggle-btn { padding: 0.5rem 1.4rem; font-size: 0.9rem; }
+  .reset-progress-btn { padding: 0.5rem 1.4rem; font-size: 0.9rem; }
+  
   .roadmap-container { gap: 3.5rem; }
   .roadmap-category-block { max-width: 480px; }
   .category-header-glow { padding: 1.2rem 2rem; margin-bottom: 2rem; }
@@ -650,7 +745,7 @@
   .card-icon-wrapper svg { width: 44px; height: 44px; }
   .card-text-wrapper h3 { font-size: 1.45rem; }
   .card-text-wrapper p { font-size: 0.95rem; }
-  .card-footer-action, .card-footer-completed { padding: 0.8rem; font-size: 0.9rem; border-radius: 14px; }
+  .card-footer-action, .card-footer-completed, .card-footer-free { padding: 0.8rem; font-size: 0.9rem; border-radius: 14px; }
   
   .roadmap-connector { right: -3.5rem; width: 3.5rem; }
   .connector-line { width: 2.5rem; }
@@ -661,6 +756,7 @@
   .dark-theme { padding: 1rem 1.8rem; }
   .header-top-line { margin-bottom: 0.2rem; }
   .live-tv-badge { padding: 0.2rem 0.6rem; font-size: 0.65rem; }
+  .free-draw-toggle-btn { padding: 0.2rem 0.6rem; font-size: 0.65rem; }
   .reset-progress-btn { padding: 0.2rem 0.6rem; font-size: 0.65rem; }
   .home-header { margin-bottom: 0.4rem; }
   .main-title { font-size: 1.5rem; }
@@ -680,7 +776,7 @@
   .card-icon-wrapper svg { width: 22px; height: 22px; }
   .card-text-wrapper h3 { font-size: 0.9rem; margin-bottom: 0; }
   .card-text-wrapper p { font-size: 0.7rem; }
-  .card-footer-action, .card-footer-completed { padding: 0.3rem 0.5rem; font-size: 0.65rem; border-radius: 8px; }
+  .card-footer-action, .card-footer-completed, .card-footer-free { padding: 0.3rem 0.5rem; font-size: 0.65rem; border-radius: 8px; }
   .card-status-indicator { top: 0.6rem; right: 0.8rem; }
   
   .roadmap-connector { right: -1rem; width: 1rem; }

@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Trophy, Volleyball, Activity, Sparkles, Tv, Lock, CheckCircle2, RotateCcw } from 'lucide-react';
+import { Trophy, Volleyball, Activity, Sparkles, Tv, Lock, CheckCircle2, RotateCcw, Unlock } from 'lucide-react';
 import './Home.css';
 
 const Home = () => {
   const navigate = useNavigate();
   const [completedSports, setCompletedSports] = useState({});
+  const [freeDrawMode, setFreeDrawMode] = useState(() => {
+    return localStorage.getItem('free_draw_mode') === 'true';
+  });
 
   const sportsOrder = [
     {
@@ -19,7 +22,7 @@ const Home = () => {
     },
     {
       id: 'badminton_female',
-      name: 'Cầu Lông - Đôi Nữ',
+      name: 'CẦU LÔNG - ĐÔI NỮ',
       desc: '6 Cặp • 2 Bảng',
       icon: <Activity size={36} />,
       accent: 'yellow',
@@ -87,9 +90,7 @@ const Home = () => {
   }, []);
 
   // Determine which sport is currently active
-  // The first sport in the order that is NOT completed is active
   let activeIndex = sportsOrder.findIndex(sport => !completedSports[sport.id]);
-  // If all are completed, activeIndex is -1
   if (activeIndex === -1 && Object.keys(completedSports).length > 0) {
     activeIndex = sportsOrder.length; // all completed
   }
@@ -97,6 +98,7 @@ const Home = () => {
   const getSportState = (sportId, index) => {
     if (completedSports[sportId]) return 'completed';
     if (index === activeIndex) return 'active';
+    if (freeDrawMode) return 'free'; // Special state: unlocked under free draw mode
     return 'locked';
   };
 
@@ -104,6 +106,14 @@ const Home = () => {
     if (state !== 'locked') {
       navigate(`/draw/${sport.id}`);
     }
+  };
+
+  const handleToggleFreeDraw = () => {
+    setFreeDrawMode(prev => {
+      const next = !prev;
+      localStorage.setItem('free_draw_mode', String(next));
+      return next;
+    });
   };
 
   const handleResetProgress = () => {
@@ -156,11 +166,22 @@ const Home = () => {
             <Tv size={16} className="tv-icon" />
             <span>LIVE BROADCAST MODE</span>
           </div>
-          
-          <button className="reset-progress-btn" onClick={handleResetProgress} title="Đặt lại toàn bộ tiến trình">
-            <RotateCcw size={14} />
-            <span>Đặt Lại Lộ Trình</span>
-          </button>
+
+          <div className="header-admin-actions">
+            <button 
+              className={`free-draw-toggle-btn ${freeDrawMode ? 'active-mode' : ''}`} 
+              onClick={handleToggleFreeDraw}
+              title="Mở khóa tất cả các môn bốc thăm khẩn cấp"
+            >
+              <span className="toggle-dot"></span>
+              <span>BỐC TỰ DO: {freeDrawMode ? 'BẬT' : 'TẮT'}</span>
+            </button>
+            
+            <button className="reset-progress-btn" onClick={handleResetProgress} title="Đặt lại toàn bộ tiến trình">
+              <RotateCcw size={14} />
+              <span>Đặt Lại Lộ Trình</span>
+            </button>
+          </div>
         </div>
 
         <h1 className="title-premium">
@@ -201,6 +222,7 @@ const Home = () => {
                     <div className="card-status-indicator">
                       {state === 'completed' && <CheckCircle2 className="icon-completed" size={20} />}
                       {state === 'active' && <span className="live-badge-glow">LIVE</span>}
+                      {state === 'free' && <Unlock className="icon-free-draw" size={16} />}
                       {state === 'locked' && <Lock className="icon-locked" size={16} />}
                     </div>
 
@@ -217,6 +239,14 @@ const Home = () => {
                     {state === 'active' && (
                       <div className="card-footer-action">
                         <span>BẮT ĐẦU NGAY</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="arrow-icon">
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    )}
+                    {state === 'free' && (
+                      <div className="card-footer-free">
+                        <span>BỐC TỰ DO</span>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="arrow-icon">
                           <path d="M5 12h14M12 5l7 7-7 7" />
                         </svg>
