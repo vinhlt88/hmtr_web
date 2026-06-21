@@ -33,32 +33,44 @@ export const MOCK_TEAMS = {
     { id: 'w8', name: 'Nữ Khoá 2012' },
   ],
   badminton_male: [
-    { id: 'bm1', name: 'Đôi Nam Khoá 05' },
-    { id: 'bm2', name: 'Đôi Nam Khoá 08' },
-    { id: 'bm3', name: 'Đôi Nam Khoá 10' },
-    { id: 'bm4', name: 'Đôi Nam Khoá 12' },
-    { id: 'bm5', name: 'Đôi Nam Khoá 15' },
-    { id: 'bm6', name: 'Đôi Nam Khoá 18' },
-    { id: 'bm7', name: 'Đôi Nam Tân Đức' },
-    { id: 'bm8', name: 'Đôi Nam Khối 11' }
+    { id: 'bm1', name: 'Quốc Doanh - Trung Quốc (Shark)' },
+    { id: 'bm2', name: 'Duy Tuấn - Hoàng Bảo (GG Team)' },
+    { id: 'bm3', name: 'Quang Ly - Tấn Thanh (K2011)' },
+    { id: 'bm4', name: 'Phong Sam - Thiên Nhân (BC27)' },
+    { id: 'bm5', name: 'Quốc Thuận - Thầy Thoại (K2005)' },
+    { id: 'bm6', name: 'Nhật Phong - Hữu Phước (K2019)' },
+    { id: 'bm7', name: 'Công Trường - Dương Trường (K2024)' },
+    { id: 'bm8', name: 'Thanh Tùng - Dương Tùng (K2022)' },
+    { id: 'bm9', name: 'Quang Kiên - Việt Thắng (K2026)' },
+    { id: 'bm10', name: 'Linh Thuần - Nhật Viên (K2018)' },
+    { id: 'bm11', name: 'Gia Ân - Văn Vương (K2018)' },
+    { id: 'bm12', name: 'Năng Tuyên - Việt Rin (K2009)' }
   ],
   badminton_female: [
-    { id: 'bf1', name: 'Đôi Nữ Khoá 07' },
-    { id: 'bf2', name: 'Đôi Nữ Khoá 09' },
-    { id: 'bf3', name: 'Đôi Nữ Khoá 11' },
-    { id: 'bf4', name: 'Đôi Nữ Khoá 14' },
-    { id: 'bf5', name: 'Đôi Nữ Khoá 17' },
-    { id: 'bf6', name: 'Đôi Nữ Tân Đức' }
+    { id: 'bf1', name: 'Hạnh Nguyên - Thanh Thảo (BC27)' },
+    { id: 'bf2', name: 'Gia Hân - Khả Nguyên (GG Team)' },
+    { id: 'bf3', name: 'Ngọc Mỹ - Ly Na (K2016)' },
+    { id: 'bf4', name: 'Thuỳ Dung - Thu Hiền (K2007)' },
+    { id: 'bf5', name: 'Mỹ Hạnh - Diểm Xuân (K2011)' },
+    { id: 'bf6', name: 'Thị Ngọt - Lan Chi (FC Chị Em)' },
+    { id: 'bf7', name: 'Kim Ngọc - Thiên Hà (K2026)' },
+    { id: 'bf8', name: 'Diệu Khanh - Hoàng Vương (K2010)' },
+    { id: 'bf9', name: 'Nhi San - Thảo Nguyên (K2012)' },
+    { id: 'bf10', name: 'Bích Ngọc - Kim Trầm (K2018)' },
+    { id: 'bf11', name: 'Thị Trâm - Hồng Hà (K2017)' },
+    { id: 'bf12', name: 'Bình Tuệ - Kim Liên (K2009)' }
   ],
   badminton_mixed: [
-    { id: 'bx1', name: 'Đôi Nam Nữ K06' },
-    { id: 'bx2', name: 'Đôi Nam Nữ K08' },
-    { id: 'bx3', name: 'Đôi Nam Nữ K11' },
-    { id: 'bx4', name: 'Đôi Nam Nữ K13' },
-    { id: 'bx5', name: 'Đôi Nam Nữ K16' },
-    { id: 'bx6', name: 'Đôi Nam Nữ K19' },
-    { id: 'bx7', name: 'Đôi Nam Nữ Tân Đức' },
-    { id: 'bx8', name: 'Đôi Nam Nữ Khối 11' }
+    { id: 'bx1', name: 'Duy Tuấn - Gia Hân (GG Team)' },
+    { id: 'bx2', name: 'Hoàng Bảo - Khả Nguyên (GG Team)' },
+    { id: 'bx3', name: 'Quốc Dinh - Huyền Trân (T&Z)' },
+    { id: 'bx4', name: 'Phong Sam - Hạnh Nguyên (BC27)' },
+    { id: 'bx5', name: 'Linh Thuần - Bích Ngọc (K2018)' },
+    { id: 'bx6', name: 'Gia Ân - Kim Trầm (K2018)' },
+    { id: 'bx7', name: 'Nhật Viên - Trà Giang (K2018)' },
+    { id: 'bx8', name: 'Năng Tuyên - Bình Tuệ (K2009)' },
+    { id: 'bx9', name: 'Việt Rin - Ngọc Anh (K2009)' },
+    { id: 'bx10', name: 'Đại Phương - Thị Trâm (K2017)' }
   ],
   volleyball_male: [
     { id: 'vm1', name: 'Bóng Chuyền K05' },
@@ -92,15 +104,17 @@ export const MOCK_GROUPS = {
   ],
   badminton_male: [
     { id: 'A', name: 'Bảng A', capacity: 4 },
-    { id: 'B', name: 'Bảng B', capacity: 4 }
+    { id: 'B', name: 'Bảng B', capacity: 4 },
+    { id: 'C', name: 'Bảng C', capacity: 4 }
   ],
   badminton_female: [
-    { id: 'A', name: 'Bảng A', capacity: 3 },
-    { id: 'B', name: 'Bảng B', capacity: 3 }
+    { id: 'A', name: 'Bảng A', capacity: 4 },
+    { id: 'B', name: 'Bảng B', capacity: 4 },
+    { id: 'C', name: 'Bảng C', capacity: 4 }
   ],
   badminton_mixed: [
-    { id: 'A', name: 'Bảng A', capacity: 4 },
-    { id: 'B', name: 'Bảng B', capacity: 4 }
+    { id: 'A', name: 'Bảng A', capacity: 5 },
+    { id: 'B', name: 'Bảng B', capacity: 5 }
   ],
   volleyball_male: [
     { id: 'A', name: 'Bảng A', capacity: 3 },
