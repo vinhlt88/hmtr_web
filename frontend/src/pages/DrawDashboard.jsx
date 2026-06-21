@@ -76,6 +76,16 @@ const playSound = (type) => {
   }
 };
 
+const sportNames = {
+  badminton_male: 'Cầu Lông - Đôi Nam',
+  badminton_female: 'Cầu Lông - Đôi Nữ',
+  badminton_mixed: 'Cầu Lông - Đôi Nam Nữ',
+  volleyball_male: 'Bóng Chuyền Nam',
+  volleyball_female: 'Bóng Chuyền Nữ',
+  womens_football: 'Bóng Đá Nữ',
+  mens_football: 'Bóng Đá Nam'
+};
+
 const DrawDashboard = () => {
   const { sport } = useParams();
   const navigate = useNavigate();
@@ -239,7 +249,7 @@ const DrawDashboard = () => {
         
         <div className="header-title-wrapper">
           <p className="header-subtitle">Lễ Bốc Thăm Chia Bảng</p>
-          <h1 className="header-title">{sport === 'mens_football' ? 'BÓNG ĐÁ NAM' : 'BÓNG ĐÁ NỮ'} - HAMU 2026</h1>
+          <h1 className="header-title">{sportNames[sport]?.toUpperCase() || 'GIẢI ĐẤU'} - HAMU 2026</h1>
         </div>
 
         <div className="top-actions">
@@ -277,7 +287,9 @@ const DrawDashboard = () => {
 
             {drawState === 'TEAM_REVEALED' && (
               <div className="revealed-card">
-                <p className="revealed-team-title">Đội bóng tiếp theo:</p>
+                <p className="revealed-team-title">
+                  {sport.includes('badminton') ? 'Cặp đấu tiếp theo:' : 'Đội bóng tiếp theo:'}
+                </p>
                 <h2 className="revealed-text">{selectedTeam?.name}</h2>
                 <button className="huge-btn mt-4" onClick={handleDrawSlot}>BỐC VỊ TRÍ</button>
               </div>
@@ -292,7 +304,9 @@ const DrawDashboard = () => {
             {drawState === 'SLOT_REVEALED' && (
               <div className="slot-reveal-container">
                 <div className="revealed-card">
-                  <p className="revealed-team-title">{selectedTeam?.name} VÀO VỊ TRÍ:</p>
+                  <p className="revealed-team-title">
+                    {sport.includes('badminton') ? 'CẶP ĐẤU' : 'ĐỘI BÓNG'} {selectedTeam?.name?.toUpperCase()} VÀO VỊ TRÍ:
+                  </p>
                   <div className="slot-result-card">
                     <span className="group-letter">{selectedSlot?.charAt(0)}</span>
                     <span className="pos-number">{selectedSlot?.slice(1)}</span>
@@ -335,7 +349,9 @@ const DrawDashboard = () => {
       </main>
 
       <footer className="bottom-bar">
-        <span className="bottom-label">CÁC ĐỘI CHƯA BỐC:</span>
+        <span className="bottom-label">
+          {sport.includes('badminton') ? 'CÁC CẶP CHƯA BỐC:' : 'CÁC ĐỘI CHƯA BỐC:'}
+        </span>
         <div className="pill-container">
           {unassignedTeams.map(t => (
             <span key={t.id} className="team-pill">{t.name}</span>

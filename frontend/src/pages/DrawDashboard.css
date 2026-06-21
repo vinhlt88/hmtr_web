@@ -3,9 +3,9 @@
   flex-direction: column;
   height: 100vh;
   width: 100vw;
-  padding: 1.5rem 2.5rem;
+  padding: 1.2rem 2rem;
   overflow: hidden;
-  gap: 1.2rem;
+  gap: 1rem;
   background-color: var(--dark-bg);
   background-image: var(--dark-gradient);
   color: var(--text-light);
@@ -109,12 +109,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 85px;
-  padding: 0 2rem;
+  height: 72px;
+  padding: 0 1.5rem;
   background: rgba(13, 18, 36, 0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-radius: 20px;
+  border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   z-index: 2;
@@ -128,7 +128,7 @@
 
 .header-title {
   margin: 0;
-  font-size: 2.1rem;
+  font-size: 1.85rem;
   font-weight: 950;
   text-transform: uppercase;
   background: var(--gold-metallic);
@@ -153,31 +153,31 @@
 }
 
 .header-subtitle {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--text-light-muted);
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 4px;
-  margin: 0 0 0.15rem 0;
+  margin: 0 0 0.1rem 0;
 }
 
 .top-actions {
   display: flex;
-  gap: 0.8rem;
+  gap: 0.6rem;
 }
 
 .back-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.5rem;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: #e2e8f0;
-  padding: 0.75rem 1.4rem;
-  border-radius: 12px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
   font-weight: 800;
-  font-size: 0.8rem;
-  letter-spacing: 1px;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -186,8 +186,8 @@
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: #e2e8f0;
-  padding: 0.75rem;
-  border-radius: 12px;
+  padding: 0.6rem;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
@@ -232,7 +232,7 @@
 .main-content {
   display: flex;
   flex: 1;
-  gap: 1.8rem;
+  gap: 1.5rem;
   min-height: 0;
   z-index: 2;
   position: relative;
@@ -240,7 +240,7 @@
 
 /* Arena (Center) */
 .draw-arena {
-  flex: 1.4;
+  flex: 1.2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -249,15 +249,15 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-radius: 32px;
+  border-radius: 28px;
   position: relative;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-  padding: 2.5rem;
+  padding: 2rem;
 }
 
 .arena-header {
   position: absolute;
-  top: 2rem;
+  top: 1.8rem;
   text-align: center;
 }
 
@@ -266,14 +266,14 @@
   color: var(--neon-gold);
   text-transform: uppercase;
   letter-spacing: 4px;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   text-shadow: 0 0 10px rgba(255, 190, 11, 0.4);
 }
 
 .huge-btn {
-  font-size: 2.1rem;
+  font-size: 1.95rem;
   font-weight: 950;
-  padding: 1.6rem 4.5rem;
+  padding: 1.4rem 4rem;
   border-radius: 100px;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -363,7 +363,7 @@
 }
 
 .random-text {
-  font-size: 5.5rem;
+  font-size: 5rem;
   font-weight: 950;
   letter-spacing: -2px;
   animation: scale-variation 0.1s infinite alternate;
@@ -392,8 +392,8 @@
 /* Revealed Card in Arena */
 .revealed-card {
   background: rgba(18, 25, 51, 0.85);
-  padding: 3.5rem 5rem;
-  border-radius: 40px;
+  padding: 3rem 4rem;
+  border-radius: 32px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -434,16 +434,16 @@
 }
 
 .revealed-team-title {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   color: var(--text-light-muted);
   font-weight: 800;
   text-transform: uppercase;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem;
   letter-spacing: 3px;
 }
 
 .revealed-text {
-  font-size: 5rem;
+  font-size: 4.5rem;
   font-weight: 950;
   color: #ffffff;
   margin: 0;
@@ -454,25 +454,25 @@
 }
 
 .mt-4 {
-  margin-top: 2rem !important;
+  margin-top: 1.5rem !important;
 }
 
 .slot-reveal-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.8rem;
+  gap: 1.5rem;
 }
 
 .slot-result-card {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 13rem;
+  font-size: 11rem;
   font-weight: 950;
   background: rgba(10, 14, 28, 0.8);
-  padding: 0.5rem 5rem;
-  border-radius: 40px;
+  padding: 0.5rem 4.5rem;
+  border-radius: 32px;
   line-height: 0.8;
   color: #ffffff;
 }
@@ -518,14 +518,14 @@
   text-shadow: 0 0 15px rgba(255, 190, 11, 0.7);
 }
 
-/* Board (Right side) */
+/* Board (Right side) - Stadium Scoreboard Theme */
 .draw-board {
-  flex: 0.9;
+  flex: 1.1;
   background: rgba(13, 18, 36, 0.45);
   border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-radius: 32px;
+  border-radius: 28px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -533,7 +533,7 @@
 }
 
 .board-header {
-  padding: 1.5rem;
+  padding: 1.2rem 1.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   justify-content: space-between;
@@ -543,7 +543,7 @@
 
 .board-header h2 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 900;
   color: #ffffff;
   text-transform: uppercase;
@@ -553,9 +553,9 @@
 .progress-badge {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 0.4rem 1rem;
-  border-radius: 10px;
-  font-size: 0.8rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
   font-weight: 800;
   color: var(--neon-gold);
   text-shadow: 0 0 8px rgba(255, 190, 11, 0.3);
@@ -565,58 +565,46 @@
 .groups-grid {
   flex: 1;
   display: grid;
-  gap: 1.2rem;
-  padding: 1.5rem;
-  overflow-y: auto;
+  gap: 0.8rem;
+  padding: 1rem;
+  overflow-y: hidden; /* Hide scrollbars as it fits now */
 }
 
-/* Custom Scrollbar for Group Grid */
-.groups-grid::-webkit-scrollbar {
-  width: 6px;
-}
-.groups-grid::-webkit-scrollbar-track {
-  background: transparent;
-}
-.groups-grid::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-}
-.groups-grid::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
+/* Custom layout based on sport group counts to avoid scrolling */
 
-/* Grid Layout per Sport */
+/* 5 Groups (Football Men) -> 3 Columns grid */
 .groups-grid.sport-mens_football {
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  align-content: start;
 }
 
-.groups-grid.sport-womens_football {
-  grid-template-columns: 1fr;
-  align-content: center;
-}
-
-/* 4 columns layout for 4 groups in badminton male/female */
+/* 4 Groups (Badminton Male/Female) -> 2 Columns grid */
 .groups-grid.sport-badminton_male,
 .groups-grid.sport-badminton_female {
   grid-template-columns: repeat(2, 1fr);
+  align-content: start;
 }
 
-.groups-grid.sport-badminton_mixed {
-  grid-template-columns: 1fr;
-  align-content: center;
+/* 2 Groups (Football Women, Volleyball Male/Female, Badminton Mixed) -> 2 Columns grid */
+.groups-grid.sport-womens_football,
+.groups-grid.sport-badminton_mixed,
+.groups-grid.sport-volleyball_male,
+.groups-grid.sport-volleyball_female {
+  grid-template-columns: repeat(2, 1fr);
+  align-content: center; /* Centered in one page */
 }
 
 .group-card {
   background: rgba(255, 255, 255, 0.02);
-  border-radius: 20px;
+  border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.05);
   overflow: hidden;
 }
 
 .group-header {
   background: rgba(255, 255, 255, 0.04);
-  padding: 0.6rem;
-  font-size: 1.1rem;
+  padding: 0.4rem;
+  font-size: 1rem;
   font-weight: 900;
   text-align: center;
   color: #ffffff;
@@ -626,20 +614,20 @@
 
 .group-slots {
   list-style: none;
-  padding: 0.8rem;
+  padding: 0.6rem;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .slot-item {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  padding: 0.5rem 0.8rem;
+  gap: 0.6rem;
+  padding: 0.4rem 0.8rem;
   background: rgba(255, 255, 255, 0.01);
-  border-radius: 10px;
-  font-size: 0.9rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
   font-weight: 700;
   border: 1px solid rgba(255, 255, 255, 0.03);
   color: var(--text-light-muted);
@@ -694,15 +682,15 @@
 
 /* Bottom Bar */
 .bottom-bar {
-  height: 85px;
+  height: 72px;
   display: flex;
   align-items: center;
-  padding: 0 2rem;
-  gap: 1.5rem;
+  padding: 0 1.5rem;
+  gap: 1.2rem;
   background: rgba(13, 18, 36, 0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-radius: 20px;
+  border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.4);
   z-index: 2;
@@ -712,7 +700,7 @@
 
 .bottom-label {
   font-weight: 900;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--neon-gold);
   text-shadow: 0 0 10px rgba(255, 190, 11, 0.3);
   text-transform: uppercase;
@@ -722,9 +710,9 @@
 
 .pill-container {
   display: flex;
-  gap: 0.6rem;
+  gap: 0.5rem;
   overflow-x: auto;
-  padding: 0.5rem 0;
+  padding: 0.4rem 0;
   width: 100%;
 }
 
@@ -739,10 +727,10 @@
 .team-pill {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 0.4rem 1.1rem;
+  padding: 0.35rem 1rem;
   border-radius: 100px;
   white-space: nowrap;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 700;
   color: #e2e8f0;
   transition: all 0.3s ease;
@@ -883,37 +871,37 @@
 
 /* Low-height laptop optimization */
 @media (max-height: 750px) {
-  .draw-layout { padding: 0.8rem 1.5rem; gap: 0.8rem; }
-  .top-bar { height: 70px; padding: 0 1.2rem; border-radius: 15px; }
-  .header-subtitle { font-size: 0.7rem; }
-  .header-title { font-size: 1.5rem; }
-  .back-btn { padding: 0.5rem 1rem; font-size: 0.75rem; border-radius: 10px; }
-  .icon-btn { padding: 0.5rem; border-radius: 10px; }
+  .draw-layout { padding: 0.6rem 1.2rem; gap: 0.6rem; }
+  .top-bar { height: 60px; padding: 0 1.2rem; border-radius: 12px; }
+  .header-subtitle { font-size: 0.65rem; }
+  .header-title { font-size: 1.35rem; }
+  .back-btn { padding: 0.4rem 0.8rem; font-size: 0.7rem; border-radius: 8px; }
+  .icon-btn { padding: 0.4rem; border-radius: 8px; }
   
-  .draw-arena { padding: 1.5rem; border-radius: 20px; }
-  .arena-header { top: 1.2rem; }
-  .arena-status { font-size: 1rem; }
-  .huge-btn { font-size: 1.5rem; padding: 1.1rem 3rem; }
-  .random-text { font-size: 3.5rem; }
+  .draw-arena { padding: 1rem; border-radius: 16px; }
+  .arena-header { top: 1rem; }
+  .arena-status { font-size: 0.95rem; }
+  .huge-btn { font-size: 1.35rem; padding: 0.9rem 2.5rem; }
+  .random-text { font-size: 3rem; }
   
-  .revealed-card { padding: 2rem 3rem; border-radius: 24px; }
-  .revealed-team-title { font-size: 0.95rem; margin-bottom: 0.8rem; }
-  .revealed-text { font-size: 3rem; }
+  .revealed-card { padding: 1.5rem 2.5rem; border-radius: 20px; }
+  .revealed-team-title { font-size: 0.85rem; margin-bottom: 0.6rem; }
+  .revealed-text { font-size: 2.5rem; }
   
-  .slot-reveal-container { gap: 1rem; }
-  .slot-result-card { font-size: 8rem; border-radius: 24px; padding: 0.3rem 3rem; border-width: 4px; }
+  .slot-reveal-container { gap: 0.8rem; }
+  .slot-result-card { font-size: 6.5rem; border-radius: 20px; padding: 0.2rem 2.5rem; border-width: 3px; }
   
-  .board-header { padding: 1rem; }
-  .board-header h2 { font-size: 1rem; }
-  .progress-badge { font-size: 0.75rem; padding: 0.3rem 0.8rem; }
-  .groups-grid { padding: 1rem; gap: 0.8rem; }
-  .group-card { border-radius: 14px; }
-  .group-header { font-size: 0.95rem; padding: 0.4rem; }
-  .group-slots { padding: 0.5rem; gap: 4px; }
-  .slot-item { font-size: 0.8rem; padding: 0.4rem 0.6rem; border-radius: 8px; }
-  .slot-item .slot-id { width: 20px; }
+  .board-header { padding: 0.8rem; }
+  .board-header h2 { font-size: 0.9rem; }
+  .progress-badge { font-size: 0.7rem; padding: 0.25rem 0.6rem; }
+  .groups-grid { padding: 0.6rem; gap: 0.5rem; }
+  .group-card { border-radius: 12px; }
+  .group-header { font-size: 0.85rem; padding: 0.3rem; }
+  .group-slots { padding: 0.4rem; gap: 2px; }
+  .slot-item { font-size: 0.75rem; padding: 0.35rem 0.5rem; border-radius: 6px; }
+  .slot-item .slot-id { width: 18px; }
   
-  .bottom-bar { height: 70px; padding: 0 1.2rem; border-radius: 15px; gap: 1rem; }
-  .bottom-label { font-size: 0.75rem; }
-  .team-pill { font-size: 0.75rem; padding: 0.3rem 0.8rem; }
+  .bottom-bar { height: 60px; padding: 0 1rem; border-radius: 12px; gap: 0.8rem; }
+  .bottom-label { font-size: 0.7rem; }
+  .team-pill { font-size: 0.7rem; padding: 0.25rem 0.6rem; }
 }
