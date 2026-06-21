@@ -1,4 +1,5 @@
 {
+  "name": "hmtr-2026",
   "rewrites": [
     { "source": "/(.*)", "destination": "/" }
   ]
