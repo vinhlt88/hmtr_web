@@ -20,23 +20,23 @@
   filter: blur(140px);
   pointer-events: none;
   z-index: 0;
-  opacity: 0.4;
+  opacity: 0.35;
   mix-blend-mode: screen;
 }
 
 .glow-1 {
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(255, 46, 99, 0.2) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 190, 11, 0.15) 0%, transparent 70%);
   top: -10%;
-  left: 10%;
+  left: 5%;
   animation: spotlight-pulse 10s infinite alternate ease-in-out;
 }
 
 .glow-2 {
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 46, 99, 0.15) 0%, transparent 70%);
   bottom: -10%;
   right: 5%;
   animation: spotlight-pulse 12s infinite alternate-reverse ease-in-out;
@@ -45,10 +45,9 @@
 .glow-3 {
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(255, 190, 11, 0.12) 0%, transparent 70%);
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.1) 0%, transparent 70%);
+  top: 45%;
+  left: 45%;
 }
 
 /* Particles Effect */
@@ -84,7 +83,17 @@
 .home-header {
   text-align: center;
   z-index: 2;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
+  position: relative;
+}
+
+.header-top-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 0.5rem;
+  position: relative;
 }
 
 .live-tv-badge {
@@ -99,8 +108,30 @@
   font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 2px;
-  margin-bottom: 0.8rem;
   box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+}
+
+.reset-progress-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  padding: 0.35rem 1rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.reset-progress-btn:hover {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #f87171;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.25);
+  transform: translateY(-1px);
 }
 
 .tv-icon {
@@ -115,7 +146,7 @@
 }
 
 .main-title {
-  font-size: 2.2rem;
+  font-size: 2.1rem;
   font-weight: 800;
   letter-spacing: 4px;
   color: #e2e8f0;
@@ -123,7 +154,7 @@
 }
 
 .sub-title-gold {
-  font-size: 3.8rem;
+  font-size: 3.5rem;
   font-weight: 950;
   letter-spacing: -1px;
   background: var(--gold-metallic);
@@ -138,7 +169,7 @@
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  margin-top: 1rem;
+  margin-top: 0.8rem;
 }
 
 .draw-line-left, .draw-line-right {
@@ -147,23 +178,23 @@
 }
 
 .draw-line-left {
-  background: linear-gradient(90deg, transparent, var(--neon-red));
+  background: linear-gradient(90deg, transparent, var(--neon-gold));
 }
 
 .draw-line-right {
-  background: linear-gradient(90deg, var(--neon-blue), transparent);
+  background: linear-gradient(90deg, var(--neon-red), transparent);
 }
 
 .draw-title-glow {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 900;
-  letter-spacing: 6px;
+  letter-spacing: 5px;
   color: #ffffff;
-  background: linear-gradient(135deg, rgba(255, 46, 99, 0.2) 0%, rgba(0, 240, 255, 0.2) 100%);
-  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, rgba(255, 190, 11, 0.15) 0%, rgba(255, 46, 99, 0.15) 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
   box-shadow: 
-    0 0 25px rgba(255, 46, 99, 0.1),
-    0 0 10px rgba(0, 240, 255, 0.1),
+    0 0 25px rgba(255, 190, 11, 0.08),
+    0 0 10px rgba(255, 46, 99, 0.08),
     inset 0 0 15px rgba(255, 255, 255, 0.05);
   padding: 0.4rem 2.5rem;
   border-radius: 8px;
@@ -183,354 +214,346 @@
   animation: pulse-dot 1.2s infinite ease-in-out;
 }
 
-/* Layout Split */
-.home-content-split {
+/* Roadmap Grid Layout */
+.roadmap-container {
   flex: 1;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 2.2rem;
   width: 100%;
-  max-width: 1600px;
+  max-width: 1680px;
   margin: 0 auto;
   z-index: 2;
-  padding: 0.5rem 0;
+  position: relative;
+  padding: 0.8rem 0;
 }
 
-.section-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.8rem;
-  font-weight: 900;
-  letter-spacing: 3px;
-  color: var(--neon-gold);
-  text-transform: uppercase;
-  margin-bottom: 0.8rem;
-  text-shadow: 0 0 10px rgba(255, 190, 11, 0.3);
-}
-
-.section-label-muted {
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 3px;
-  color: var(--text-light-muted);
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-}
-
-.spark-icon {
-  animation: rotate-sparkle 4s infinite linear;
-}
-
-/* Active Arena */
-.active-arena {
-  width: 100%;
+.roadmap-category-block {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  flex: 1;
+  max-width: 440px;
 }
 
-.active-cards-grid {
+.category-header-glow {
+  text-align: center;
+  padding: 0.8rem 1.8rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  margin-bottom: 1.5rem;
+  width: 90%;
+  box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.02);
+}
+
+.block-badminton .category-header-glow {
+  border-bottom: 3px solid var(--neon-gold);
+  box-shadow: 0 10px 20px rgba(255, 190, 11, 0.05);
+}
+
+.block-volleyball .category-header-glow {
+  border-bottom: 3px solid var(--neon-gold);
+  border-bottom-color: #fca5a5;
+  box-shadow: 0 10px 20px rgba(253, 186, 116, 0.05);
+}
+
+.block-football .category-header-glow {
+  border-bottom: 3px solid var(--neon-red);
+  box-shadow: 0 10px 20px rgba(255, 46, 99, 0.05);
+}
+
+.cat-title {
+  font-size: 1.1rem;
+  font-weight: 950;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.cat-subtitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-light-muted);
+  text-transform: uppercase;
+  margin-top: 0.15rem;
+  letter-spacing: 1px;
+}
+
+.category-cards-list {
   display: flex;
-  gap: 3.5rem;
-  justify-content: center;
+  flex-direction: column;
+  gap: 1.1rem;
   width: 100%;
 }
 
-/* Premium Card */
-.premium-card {
+/* Roadmap Cards */
+.roadmap-card {
   position: relative;
-  border-radius: 24px;
-  background: var(--card-active-bg);
+  border-radius: 20px;
+  background: rgba(13, 18, 36, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
   cursor: pointer;
-}
-
-.active-card {
-  width: 440px;
-  height: 300px;
-  padding: 2.2rem 2.2rem 1.8rem 2.2rem;
+  padding: 1.2rem 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 0.8rem;
 }
 
-/* Card Glow Borders for Active sports */
-.active-card.accent-red .card-glowing-border {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  border-radius: 24px;
-  border: 2px solid var(--border-neon-red);
-  box-shadow: inset 0 0 20px rgba(255, 46, 99, 0.05);
-  pointer-events: none;
-  transition: all 0.5s ease;
-  animation: glow-pulse-red 3s infinite ease-in-out;
+/* Card states */
+.roadmap-card.state-locked {
+  opacity: 0.3;
+  cursor: not-allowed;
+  background: rgba(5, 7, 15, 0.4);
+  border-color: rgba(255, 255, 255, 0.03);
+  box-shadow: none;
 }
 
-.active-card.accent-blue .card-glowing-border {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  border-radius: 24px;
-  border: 2px solid var(--border-neon-blue);
-  box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.05);
-  pointer-events: none;
-  transition: all 0.5s ease;
+.roadmap-card.state-locked:hover {
+  transform: none;
+}
+
+.roadmap-card.state-completed {
+  border-color: rgba(16, 185, 129, 0.3);
+  background: rgba(13, 36, 26, 0.4);
+}
+
+.roadmap-card.state-completed:hover {
+  border-color: rgba(16, 185, 129, 0.7);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(16, 185, 129, 0.2);
+  transform: translateY(-3px);
+}
+
+/* Active card neon glows */
+.roadmap-card.state-active {
+  background: rgba(18, 25, 51, 0.85);
+  transform: scale(1.02);
+}
+
+.roadmap-card.state-active.accent-yellow {
+  border-color: var(--neon-gold);
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.5),
+    0 0 25px rgba(255, 190, 11, 0.35),
+    inset 0 0 15px rgba(255, 190, 11, 0.1);
+  animation: glow-pulse-yellow 3s infinite ease-in-out;
+}
+
+.roadmap-card.state-active.accent-orange {
+  border-color: #f97316;
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.5),
+    0 0 25px rgba(249, 115, 22, 0.35),
+    inset 0 0 15px rgba(249, 115, 22, 0.1);
+  animation: glow-pulse-orange 3s infinite ease-in-out;
+}
+
+.roadmap-card.state-active.accent-blue {
+  border-color: var(--neon-blue);
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.5),
+    0 0 25px rgba(0, 240, 255, 0.35),
+    inset 0 0 15px rgba(0, 240, 255, 0.1);
   animation: glow-pulse-blue 3s infinite ease-in-out;
 }
 
-.active-card:hover {
-  transform: translateY(-8px) scale(1.03);
-  background: rgba(18, 25, 51, 0.95);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-}
-
-.active-card.accent-red:hover {
-  border-color: rgba(255, 46, 99, 0.6);
+.roadmap-card.state-active.accent-red {
+  border-color: var(--neon-red);
   box-shadow: 
-    0 30px 60px rgba(0, 0, 0, 0.6),
-    0 0 30px rgba(255, 46, 99, 0.35);
+    0 15px 40px rgba(0, 0, 0, 0.5),
+    0 0 25px rgba(255, 46, 99, 0.35),
+    inset 0 0 15px rgba(255, 46, 99, 0.1);
+  animation: glow-pulse-red 3s infinite ease-in-out;
 }
 
-.active-card.accent-blue:hover {
-  border-color: rgba(0, 240, 255, 0.6);
-  box-shadow: 
-    0 30px 60px rgba(0, 0, 0, 0.6),
-    0 0 30px rgba(0, 240, 255, 0.35);
+.roadmap-card.state-active:hover {
+  transform: translateY(-5px) scale(1.04);
 }
 
-/* Card Shine Effect */
+/* Card Inner Parts */
 .card-shine {
   position: absolute;
-  top: 0;
-  left: -150%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.13) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  top: 0; left: -150%; width: 50%; height: 100%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0) 100%);
   transform: skewX(-25deg);
   transition: 0.75s;
   pointer-events: none;
 }
 
-.active-card:hover .card-shine {
+.roadmap-card:hover .card-shine {
   animation: shine-sweep 1.2s ease-in-out forwards;
 }
 
-/* Card Elements */
-.card-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.card-status-indicator {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
 }
 
-.sport-badge {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 0.25rem 0.8rem;
-  border-radius: 50px;
-  font-size: 0.65rem;
-  font-weight: 800;
-  letter-spacing: 2px;
-  color: var(--text-light-muted);
+.icon-completed {
+  color: #34d399;
+  filter: drop-shadow(0 0 5px rgba(52, 211, 153, 0.5));
 }
 
-.card-icon-glow {
-  width: 72px;
-  height: 72px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 2;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+.icon-locked {
+  color: rgba(255, 255, 255, 0.2);
 }
 
-.accent-red .card-icon-glow {
-  background: linear-gradient(135deg, rgba(255, 46, 99, 0.2) 0%, rgba(255, 46, 99, 0.05) 100%);
-  border: 1px solid rgba(255, 46, 99, 0.4);
-  color: var(--neon-red);
-  box-shadow: 0 0 20px rgba(255, 46, 99, 0.25);
-}
-
-.accent-blue .card-icon-glow {
-  background: linear-gradient(135deg, rgba(0, 240, 255, 0.2) 0%, rgba(0, 240, 255, 0.05) 100%);
-  border: 1px solid rgba(0, 240, 255, 0.4);
-  color: var(--neon-blue);
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
-}
-
-.card-icon-glow svg {
-  filter: drop-shadow(0 0 8px currentColor);
-}
-
-.card-body {
-  margin: 1.2rem 0;
-}
-
-.sport-title {
-  font-size: 2.1rem;
-  font-weight: 950;
+.live-badge-glow {
+  background: var(--neon-red);
   color: #ffffff;
-  margin: 0 0 0.5rem 0;
-  letter-spacing: -0.5px;
-}
-
-.sport-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--text-light-muted);
-}
-
-.accent-red .meta-teams { color: #fca5a5; }
-.accent-blue .meta-teams { color: #93c5fd; }
-.meta-divider { opacity: 0.5; }
-
-/* Buttons inside Cards */
-.draw-action-btn {
-  width: 100%;
-  padding: 0.9rem 1.5rem;
-  border-radius: 14px;
+  font-size: 0.6rem;
   font-weight: 900;
-  font-size: 0.85rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 2;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  letter-spacing: 1px;
+  box-shadow: 0 0 10px var(--neon-red);
+  animation: blink 1.2s infinite ease-in-out;
 }
 
-.accent-red .draw-action-btn {
-  background: linear-gradient(135deg, var(--neon-red) 0%, #d90429 100%);
-  color: #ffffff;
-  box-shadow: 0 6px 20px rgba(255, 46, 99, 0.3);
-}
-
-.accent-blue .draw-action-btn {
-  background: linear-gradient(135deg, var(--neon-blue) 0%, #0096c7 100%);
-  color: #ffffff;
-  box-shadow: 0 6px 20px rgba(0, 240, 255, 0.3);
-}
-
-.active-card:hover .draw-action-btn {
-  transform: translateY(-2px);
-}
-
-.accent-red:hover .draw-action-btn {
-  background: linear-gradient(135deg, #ff5c8a 0%, var(--neon-red) 100%);
-  box-shadow: 0 10px 25px rgba(255, 46, 99, 0.5);
-}
-
-.accent-blue:hover .draw-action-btn {
-  background: linear-gradient(135deg, #66f3ff 0%, var(--neon-blue) 100%);
-  box-shadow: 0 10px 25px rgba(0, 240, 255, 0.5);
-}
-
-.arrow-icon {
-  width: 16px;
-  height: 16px;
-  transition: transform 0.3s ease;
-}
-
-.active-card:hover .arrow-icon {
-  transform: translateX(5px);
-}
-
-/* Upcoming Arena */
-.upcoming-arena {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 0.5rem;
-}
-
-.upcoming-list {
-  display: flex;
-  gap: 1.2rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 100%;
-}
-
-.upcoming-card {
-  width: 250px;
-  height: 72px;
-  padding: 0.8rem 1.2rem;
+.roadmap-card-body {
   display: flex;
   align-items: center;
   gap: 1rem;
-  background: var(--card-upcoming-bg);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  cursor: not-allowed;
-  opacity: 0.75;
-}
-
-.upcoming-card:hover {
-  transform: none;
-  background: var(--card-upcoming-bg);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-.upcoming-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: var(--text-light-muted);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.upcoming-info {
-  display: flex;
-  flex-direction: column;
   text-align: left;
 }
 
-.upcoming-info h4 {
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: #e2e8f0;
-  margin: 0 0 0.15rem 0;
-  letter-spacing: -0.2px;
-}
-
-.badge-upcoming {
-  font-size: 0.65rem;
-  font-weight: 700;
+.card-icon-wrapper {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--text-light-muted);
+  flex-shrink: 0;
+  transition: all 0.3s ease;
 }
 
-/* Footer Styling */
+.state-active .card-icon-wrapper {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.state-active.accent-yellow .card-icon-wrapper { color: var(--neon-gold); border-color: rgba(255, 190, 11, 0.3); }
+.state-active.accent-orange .card-icon-wrapper { color: #f97316; border-color: rgba(249, 115, 22, 0.3); }
+.state-active.accent-blue .card-icon-wrapper { color: var(--neon-blue); border-color: rgba(0, 240, 255, 0.3); }
+.state-active.accent-red .card-icon-wrapper { color: var(--neon-red); border-color: rgba(255, 46, 99, 0.3); }
+
+.state-completed .card-icon-wrapper {
+  color: #34d399;
+  border-color: rgba(52, 211, 153, 0.2);
+}
+
+.card-text-wrapper h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 0.15rem 0;
+}
+
+.state-locked .card-text-wrapper h3 {
+  color: #64748b;
+}
+
+.card-text-wrapper p {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-light-muted);
+  margin: 0;
+}
+
+/* Card Footers */
+.card-footer-action, .card-footer-completed {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.card-footer-action {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  animation: pulse-button-text 2s infinite;
+}
+
+.state-active.accent-yellow .card-footer-action { background: linear-gradient(135deg, var(--neon-gold) 0%, #d4a373 100%); color: #0f172a; }
+.state-active.accent-orange .card-footer-action { background: linear-gradient(135deg, #f97316 0%, #c2410c 100%); }
+.state-active.accent-blue .card-footer-action { background: linear-gradient(135deg, var(--neon-blue) 0%, #0284c7 100%); color: #0f172a; }
+.state-active.accent-red .card-footer-action { background: linear-gradient(135deg, var(--neon-red) 0%, #be123c 100%); }
+
+.card-footer-completed {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  color: #34d399;
+}
+
+.arrow-icon {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.3s ease;
+}
+
+.roadmap-card:hover .arrow-icon {
+  transform: translateX(3px);
+}
+
+/* Roadmap Connectors between blocks */
+.roadmap-connector {
+  position: absolute;
+  top: 50%;
+  right: -2.2rem;
+  transform: translateY(-50%);
+  width: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.connector-line {
+  height: 2px;
+  width: 1.5rem;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.02));
+}
+
+.connector-arrow {
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 7px solid rgba(255, 255, 255, 0.15);
+  margin-left: -2px;
+}
+
+/* Footer & Banner */
 .home-footer-dark {
   text-align: center;
   z-index: 2;
-  margin-top: 1rem;
+  margin-top: 0.8rem;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding-top: 1rem;
+  padding-top: 0.8rem;
   width: 100%;
 }
 
@@ -542,28 +565,25 @@
   margin: 0;
 }
 
+.success-banner {
+  color: #34d399 !important;
+  font-size: 0.9rem !important;
+  font-weight: 900 !important;
+  letter-spacing: 2px !important;
+  text-shadow: 0 0 15px rgba(52, 211, 153, 0.4);
+  animation: scale-up-pulse 2s infinite ease-in-out;
+}
+
 /* Keyframes Animations */
 @keyframes float-particles {
-  0% {
-    transform: translateY(0) translateX(0);
-  }
-  50% {
-    transform: translateY(-40px) translateX(20px);
-  }
-  100% {
-    transform: translateY(0) translateX(0);
-  }
+  0% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-40px) translateX(20px); }
+  100% { transform: translateY(0) translateX(0); }
 }
 
 @keyframes spotlight-pulse {
-  0% {
-    opacity: 0.3;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0.55;
-    transform: scale(1.15);
-  }
+  0% { opacity: 0.3; transform: scale(1); }
+  100% { opacity: 0.5; transform: scale(1.1); }
 }
 
 @keyframes blink {
@@ -572,109 +592,100 @@
 }
 
 @keyframes pulse-dot {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: 0 0 10px var(--neon-red);
-  }
-  50% {
-    transform: scale(1.3);
-    box-shadow: 0 0 20px var(--neon-red), 0 0 30px var(--neon-red);
-  }
+  0%, 100% { transform: scale(1); box-shadow: 0 0 10px var(--neon-red); }
+  50% { transform: scale(1.3); box-shadow: 0 0 20px var(--neon-red); }
 }
 
-@keyframes glow-pulse-red {
-  0%, 100% {
-    border-color: rgba(255, 46, 99, 0.2);
-    box-shadow: inset 0 0 20px rgba(255, 46, 99, 0.05);
-  }
-  50% {
-    border-color: rgba(255, 46, 99, 0.45);
-    box-shadow: 
-      inset 0 0 25px rgba(255, 46, 99, 0.15),
-      0 0 15px rgba(255, 46, 99, 0.1);
-  }
+@keyframes glow-pulse-yellow {
+  0%, 100% { border-color: rgba(255, 190, 11, 0.3); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 190, 11, 0.2); }
+  50% { border-color: var(--neon-gold); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 35px rgba(255, 190, 11, 0.45); }
+}
+
+@keyframes glow-pulse-orange {
+  0%, 100% { border-color: rgba(249, 115, 22, 0.3); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(249, 115, 22, 0.2); }
+  50% { border-color: #f97316; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 35px rgba(249, 115, 22, 0.45); }
 }
 
 @keyframes glow-pulse-blue {
-  0%, 100% {
-    border-color: rgba(0, 240, 255, 0.2);
-    box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.05);
-  }
-  50% {
-    border-color: rgba(0, 240, 255, 0.45);
-    box-shadow: 
-      inset 0 0 25px rgba(0, 240, 255, 0.15),
-      0 0 15px rgba(0, 240, 255, 0.1);
-  }
+  0%, 100% { border-color: rgba(0, 240, 255, 0.3); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 240, 255, 0.2); }
+  50% { border-color: var(--neon-blue); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 35px rgba(0, 240, 255, 0.45); }
+}
+
+@keyframes glow-pulse-red {
+  0%, 100% { border-color: rgba(255, 46, 99, 0.3); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 46, 99, 0.2); }
+  50% { border-color: var(--neon-red); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 35px rgba(255, 46, 99, 0.45); }
 }
 
 @keyframes shine-sweep {
-  0% {
-    left: -150%;
-  }
-  100% {
-    left: 150%;
-  }
+  0% { left: -150%; }
+  100% { left: 150%; }
 }
 
-@keyframes rotate-sparkle {
-  0% { transform: rotate(0deg) scale(1); }
-  50% { transform: rotate(180deg) scale(1.15); }
-  100% { transform: rotate(360deg) scale(1); }
+@keyframes pulse-button-text {
+  0%, 100% { opacity: 0.95; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes scale-up-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
 }
 
 /* TV & Large Screens Optimizations (1080p, 4K) */
 @media (min-height: 900px) {
-  .dark-theme {
-    padding: 3rem 4rem 2rem 4rem;
-  }
-  .main-title { font-size: 2.8rem; }
-  .sub-title-gold { font-size: 5rem; }
-  .draw-title-glow { font-size: 1.8rem; padding: 0.6rem 3.5rem; }
+  .dark-theme { padding: 3rem 4rem 2rem 4rem; }
+  .main-title { font-size: 2.6rem; }
+  .sub-title-gold { font-size: 4.8rem; }
+  .draw-title-glow { font-size: 1.6rem; padding: 0.5rem 3.5rem; }
   
-  .active-card {
-    width: 480px;
-    height: 340px;
-    padding: 2.8rem 2.8rem 2.2rem 2.8rem;
-  }
-  .sport-title { font-size: 2.5rem; }
-  .card-icon-glow { width: 85px; height: 85px; }
-  .draw-action-btn { padding: 1.1rem 2rem; font-size: 0.95rem; }
-
-  .upcoming-card {
-    width: 280px;
-    height: 80px;
-  }
-  .upcoming-info h4 { font-size: 1.1rem; }
+  .roadmap-container { gap: 3.5rem; }
+  .roadmap-category-block { max-width: 480px; }
+  .category-header-glow { padding: 1.2rem 2rem; margin-bottom: 2rem; }
+  .cat-title { font-size: 1.35rem; }
+  .cat-subtitle { font-size: 0.85rem; }
+  .category-cards-list { gap: 1.5rem; }
+  
+  .roadmap-card { padding: 1.6rem 2.2rem; border-radius: 24px; gap: 1.2rem; }
+  .card-icon-wrapper { width: 70px; height: 70px; border-radius: 18px; }
+  .card-icon-wrapper svg { width: 44px; height: 44px; }
+  .card-text-wrapper h3 { font-size: 1.45rem; }
+  .card-text-wrapper p { font-size: 0.95rem; }
+  .card-footer-action, .card-footer-completed { padding: 0.8rem; font-size: 0.9rem; border-radius: 14px; }
+  
+  .roadmap-connector { right: -3.5rem; width: 3.5rem; }
+  .connector-line { width: 2.5rem; }
 }
 
-/* Medium Height TV screens (Laptop, default TV size screen display) */
-@media (max-height: 750px) {
-  .dark-theme {
-    padding: 1.2rem 2rem 1rem 2rem;
-  }
-  .main-title { font-size: 1.8rem; }
-  .sub-title-gold { font-size: 3rem; }
-  .draw-title-glow { font-size: 1.1rem; padding: 0.3rem 2rem; }
-  .draw-title-container { margin-top: 0.5rem; }
-  .live-tv-badge { margin-bottom: 0.4rem; padding: 0.2rem 0.8rem; }
-  .home-header { margin-bottom: 0.5rem; }
+/* Laptop Optimization (Low height screens) */
+@media (max-height: 760px) {
+  .dark-theme { padding: 1rem 1.8rem; }
+  .header-top-line { margin-bottom: 0.2rem; }
+  .live-tv-badge { padding: 0.2rem 0.6rem; font-size: 0.65rem; }
+  .reset-progress-btn { padding: 0.2rem 0.6rem; font-size: 0.65rem; }
+  .home-header { margin-bottom: 0.4rem; }
+  .main-title { font-size: 1.5rem; }
+  .sub-title-gold { font-size: 2.3rem; }
+  .draw-title-glow { font-size: 1rem; padding: 0.25rem 2rem; }
+  .draw-title-container { margin-top: 0.4rem; }
   
-  .home-content-split { gap: 1.2rem; }
-  .active-card {
-    width: 380px;
-    height: 250px;
-    padding: 1.5rem 1.8rem;
-  }
-  .sport-title { font-size: 1.8rem; margin-bottom: 0.25rem; }
-  .card-icon-glow { width: 55px; height: 55px; }
-  .card-body { margin: 0.6rem 0; }
-  .draw-action-btn { padding: 0.75rem 1.2rem; font-size: 0.8rem; border-radius: 10px; }
+  .roadmap-container { gap: 1rem; padding: 0.4rem 0; }
+  .roadmap-category-block { max-width: 320px; }
+  .category-header-glow { padding: 0.4rem 1rem; margin-bottom: 0.6rem; border-radius: 10px; }
+  .cat-title { font-size: 0.85rem; }
+  .cat-subtitle { font-size: 0.65rem; }
+  .category-cards-list { gap: 0.6rem; }
   
-  .upcoming-list { gap: 0.8rem; }
-  .upcoming-card { width: 210px; height: 60px; padding: 0.5rem 1rem; }
-  .upcoming-icon { width: 36px; height: 36px; }
-  .upcoming-info h4 { font-size: 0.85rem; }
+  .roadmap-card { padding: 0.6rem 1rem; border-radius: 12px; gap: 0.4rem; }
+  .card-icon-wrapper { width: 36px; height: 36px; border-radius: 8px; }
+  .card-icon-wrapper svg { width: 22px; height: 22px; }
+  .card-text-wrapper h3 { font-size: 0.9rem; margin-bottom: 0; }
+  .card-text-wrapper p { font-size: 0.7rem; }
+  .card-footer-action, .card-footer-completed { padding: 0.3rem 0.5rem; font-size: 0.65rem; border-radius: 8px; }
+  .card-status-indicator { top: 0.6rem; right: 0.8rem; }
   
-  .home-footer-dark { margin-top: 0.5rem; padding-top: 0.5rem; }
+  .roadmap-connector { right: -1rem; width: 1rem; }
+  .connector-line { width: 0.8rem; }
+  .connector-arrow { border-top-width: 4px; border-bottom-width: 4px; border-left-width: 5px; }
+  
+  .home-footer-dark { margin-top: 0.4rem; padding-top: 0.4rem; }
 }

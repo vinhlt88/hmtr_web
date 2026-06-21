@@ -107,6 +107,12 @@ const DrawDashboard = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  useEffect(() => {
+    if (unassignedTeams.length === 0 && initialTeams.length > 0) {
+      localStorage.setItem(`draw_completed_${sport}`, 'true');
+    }
+  }, [unassignedTeams, initialTeams, sport]);
+
   const handleStartDraw = () => {
     if (unassignedTeams.length === 0) return;
     initAudio();
@@ -167,6 +173,7 @@ const DrawDashboard = () => {
       setSelectedTeam(null);
       setSelectedSlot(null);
       setLastAssignedSlot(null);
+      localStorage.removeItem(`draw_completed_${sport}`);
     }
   };
 

@@ -31,6 +31,50 @@ export const MOCK_TEAMS = {
     { id: 'w6', name: 'Nữ Khoá 2010' },
     { id: 'w7', name: 'Nữ Khoá 2011' },
     { id: 'w8', name: 'Nữ Khoá 2012' },
+  ],
+  badminton_male: [
+    { id: 'bm1', name: 'Đôi Nam Khoá 05' },
+    { id: 'bm2', name: 'Đôi Nam Khoá 08' },
+    { id: 'bm3', name: 'Đôi Nam Khoá 10' },
+    { id: 'bm4', name: 'Đôi Nam Khoá 12' },
+    { id: 'bm5', name: 'Đôi Nam Khoá 15' },
+    { id: 'bm6', name: 'Đôi Nam Khoá 18' },
+    { id: 'bm7', name: 'Đôi Nam Tân Đức' },
+    { id: 'bm8', name: 'Đôi Nam Khối 11' }
+  ],
+  badminton_female: [
+    { id: 'bf1', name: 'Đôi Nữ Khoá 07' },
+    { id: 'bf2', name: 'Đôi Nữ Khoá 09' },
+    { id: 'bf3', name: 'Đôi Nữ Khoá 11' },
+    { id: 'bf4', name: 'Đôi Nữ Khoá 14' },
+    { id: 'bf5', name: 'Đôi Nữ Khoá 17' },
+    { id: 'bf6', name: 'Đôi Nữ Tân Đức' }
+  ],
+  badminton_mixed: [
+    { id: 'bx1', name: 'Đôi Nam Nữ K06' },
+    { id: 'bx2', name: 'Đôi Nam Nữ K08' },
+    { id: 'bx3', name: 'Đôi Nam Nữ K11' },
+    { id: 'bx4', name: 'Đôi Nam Nữ K13' },
+    { id: 'bx5', name: 'Đôi Nam Nữ K16' },
+    { id: 'bx6', name: 'Đôi Nam Nữ K19' },
+    { id: 'bx7', name: 'Đôi Nam Nữ Tân Đức' },
+    { id: 'bx8', name: 'Đôi Nam Nữ Khối 11' }
+  ],
+  volleyball_male: [
+    { id: 'vm1', name: 'Bóng Chuyền K05' },
+    { id: 'vm2', name: 'Bóng Chuyền K09' },
+    { id: 'vm3', name: 'Bóng Chuyền K12' },
+    { id: 'vm4', name: 'Bóng Chuyền K15' },
+    { id: 'vm5', name: 'Bóng Chuyền Tân Đức' },
+    { id: 'vm6', name: 'Bóng Chuyền Khối 11' }
+  ],
+  volleyball_female: [
+    { id: 'vf1', name: 'BC Nữ Khoá 08' },
+    { id: 'vf2', name: 'BC Nữ Khoá 10' },
+    { id: 'vf3', name: 'BC Nữ Khoá 13' },
+    { id: 'vf4', name: 'BC Nữ Khoá 16' },
+    { id: 'vf5', name: 'BC Nữ Tân Đức' },
+    { id: 'vf6', name: 'BC Nữ Khối 11' }
   ]
 };
 
@@ -45,6 +89,26 @@ export const MOCK_GROUPS = {
   womens_football: [
     { id: 'A', name: 'Bảng A', capacity: 4 },
     { id: 'B', name: 'Bảng B', capacity: 4 },
+  ],
+  badminton_male: [
+    { id: 'A', name: 'Bảng A', capacity: 4 },
+    { id: 'B', name: 'Bảng B', capacity: 4 }
+  ],
+  badminton_female: [
+    { id: 'A', name: 'Bảng A', capacity: 3 },
+    { id: 'B', name: 'Bảng B', capacity: 3 }
+  ],
+  badminton_mixed: [
+    { id: 'A', name: 'Bảng A', capacity: 4 },
+    { id: 'B', name: 'Bảng B', capacity: 4 }
+  ],
+  volleyball_male: [
+    { id: 'A', name: 'Bảng A', capacity: 3 },
+    { id: 'B', name: 'Bảng B', capacity: 3 }
+  ],
+  volleyball_female: [
+    { id: 'A', name: 'Bảng A', capacity: 3 },
+    { id: 'B', name: 'Bảng B', capacity: 3 }
   ]
 };
 
@@ -86,8 +150,6 @@ export const MOCK_SCHEDULE = {
     { group: 'B', home: 'B2', away: 'B3', date: '21/07/2026 (T3)', time: '16:00', code: '3' }
   ],
   womens_football: [
-    // Standard round-robin matches for 2 groups of 4 teams
-    // Let's mock a simple schedule for women's football just so it does not crash if clicked
     { group: 'A', home: 'A1', away: 'A2', date: '04/07/2026 (T7)', time: '14:30', code: '1' },
     { group: 'A', home: 'A3', away: 'A4', date: '04/07/2026 (T7)', time: '16:00', code: '1' },
     { group: 'B', home: 'B1', away: 'B2', date: '05/07/2026 (CN)', time: '14:30', code: '1' },
@@ -100,5 +162,10 @@ export const MOCK_SCHEDULE = {
     { group: 'A', home: 'A2', away: 'A3', date: '18/07/2026 (T7)', time: '16:00', code: '3' },
     { group: 'B', home: 'B4', away: 'B1', date: '19/07/2026 (CN)', time: '14:30', code: '3' },
     { group: 'B', home: 'B2', away: 'B3', date: '19/07/2026 (CN)', time: '16:00', code: '3' }
-  ]
+  ],
+  badminton_male: [],
+  badminton_female: [],
+  badminton_mixed: [],
+  volleyball_male: [],
+  volleyball_female: []
 };
