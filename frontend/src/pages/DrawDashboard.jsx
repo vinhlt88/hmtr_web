@@ -133,6 +133,36 @@ const DrawDashboard = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Auto-fill fallback if marked completed but no saved draw data exists
+  useEffect(() => {
+    const completedKey = `draw_completed_${sport}`;
+    const assignedKey = `draw_assigned_${sport}`;
+    
+    if (localStorage.getItem(completedKey) === 'true' && !localStorage.getItem(assignedKey)) {
+      const tempAssigned = {};
+      const tempTeams = [...initialTeams];
+      const tempSlots = [...allSlots];
+      
+      while (tempTeams.length > 0 && tempSlots.length > 0) {
+        const teamIdx = Math.floor(Math.random() * tempTeams.length);
+        const team = tempTeams.splice(teamIdx, 1)[0];
+        
+        const slotIdx = Math.floor(Math.random() * tempSlots.length);
+        const slot = tempSlots.splice(slotIdx, 1)[0];
+        
+        tempAssigned[slot] = team;
+      }
+      
+      localStorage.setItem(`draw_assigned_${sport}`, JSON.stringify(tempAssigned));
+      localStorage.setItem(`draw_unassigned_${sport}`, JSON.stringify([]));
+      localStorage.setItem(`draw_slots_${sport}`, JSON.stringify(tempSlots));
+      
+      setAssigned(tempAssigned);
+      setUnassignedTeams([]);
+      setAvailableSlots(tempSlots);
+    }
+  }, [sport, initialTeams, allSlots]);
+
   useEffect(() => {
     if (unassignedTeams.length === 0 && initialTeams.length > 0) {
       localStorage.setItem(`draw_completed_${sport}`, 'true');
