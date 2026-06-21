@@ -42,41 +42,236 @@ const playSound = (type) => {
       osc.start(now);
       osc.stop(now + 0.03);
     } else if (type === 'reveal') {
-      // Classic triumphant "Ta-Da!" fanfare
-      const playNote = (freq, start, duration, volume = 0.05) => {
+      // --- LUCKY DRAW PREMIUM FANFARE (~8 SECONDS) ---
+      
+      // 1. Setup Master Bus with Dynamics Compressor to glue the mix & prevent clipping
+      const masterGain = ctx.createGain();
+      masterGain.gain.setValueAtTime(0.8, now);
+      
+      const compressor = ctx.createDynamicsCompressor();
+      compressor.threshold.setValueAtTime(-12, now);
+      compressor.knee.setValueAtTime(24, now);
+      compressor.ratio.setValueAtTime(3, now);
+      compressor.attack.setValueAtTime(0.005, now);
+      compressor.release.setValueAtTime(0.20, now);
+      
+      masterGain.connect(compressor);
+      compressor.connect(ctx.destination);
+      
+      // 2. Generate White Noise Buffer for Whoosh & Crash (7.0 seconds duration)
+      const bufferSize = ctx.sampleRate * 7.0; 
+      const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+      const data = noiseBuffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = Math.random() * 2 - 1;
+      }
+
+      // -- ELEMENT A: Accelerating Ticks (0.0s to 1.4s) --
+      for (let i = 0; i < 16; i++) {
+        const tickTime = now + 1.4 * (1 - Math.pow((16 - i) / 16, 1.8));
         const osc = ctx.createOscillator();
-        const subOsc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(250 + i * 20, tickTime);
+        osc.frequency.exponentialRampToValueAtTime(60, tickTime + 0.025);
+        
+        gain.gain.setValueAtTime(0.05, tickTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, tickTime + 0.025);
+        
+        osc.connect(gain);
+        gain.connect(masterGain);
+        osc.start(tickTime);
+        osc.stop(tickTime + 0.025);
+      }
+
+      // -- ELEMENT B: Whoosh Sweeper (0.0s to 1.5s) --
+      const whooshSource = ctx.createBufferSource();
+      whooshSource.buffer = noiseBuffer;
+      
+      const whooshFilter = ctx.createBiquadFilter();
+      whooshFilter.type = 'bandpass';
+      whooshFilter.Q.setValueAtTime(2.5, now);
+      whooshFilter.frequency.setValueAtTime(80, now);
+      whooshFilter.frequency.exponentialRampToValueAtTime(2400, now + 1.5);
+      
+      const whooshGain = ctx.createGain();
+      whooshGain.gain.setValueAtTime(0, now);
+      whooshGain.gain.linearRampToValueAtTime(0.045, now + 1.2);
+      whooshGain.gain.exponentialRampToValueAtTime(0.001, now + 1.5);
+      
+      whooshSource.connect(whooshFilter);
+      whooshFilter.connect(whooshGain);
+      whooshGain.connect(masterGain);
+      whooshSource.start(now);
+
+      // -- ELEMENT C: Accelerating Timpani Drum Roll (0.4s to 1.5s) --
+      for (let i = 0; i < 20; i++) {
+        const hitTime = now + 0.4 + 1.1 * Math.pow(i / 19, 1.6);
+        const vol = 0.01 + Math.pow(i / 19, 1.5) * 0.08;
+        
+        // Mallet hit click (noise transient)
+        const transient = ctx.createBufferSource();
+        transient.buffer = noiseBuffer;
+        const transientFilter = ctx.createBiquadFilter();
+        transientFilter.type = 'bandpass';
+        transientFilter.frequency.setValueAtTime(200, hitTime);
+        transientFilter.Q.setValueAtTime(1.0, hitTime);
+        
+        const transientGain = ctx.createGain();
+        transientGain.gain.setValueAtTime(vol * 0.4, hitTime);
+        transientGain.gain.exponentialRampToValueAtTime(0.001, hitTime + 0.015);
+        
+        transient.connect(transientFilter);
+        transientFilter.connect(transientGain);
+        transientGain.connect(masterGain);
+        transient.start(hitTime);
+        transient.stop(hitTime + 0.015);
+        
+        // Low pitch triangle body
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        
+        osc.type = 'triangle';
+        const freq = 65 + (i / 19) * 25;
+        osc.frequency.setValueAtTime(freq, hitTime);
+        osc.frequency.exponentialRampToValueAtTime(freq * 0.8, hitTime + 0.12);
+        
+        gain.gain.setValueAtTime(vol, hitTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, hitTime + 0.12);
+        
+        osc.connect(gain);
+        gain.connect(masterGain);
+        osc.start(hitTime);
+        osc.stop(hitTime + 0.12);
+      }
+
+      // -- ELEMENT D: Cymbal Crash (Hits at 1.5s, decays smoothly to 6.5s) --
+      const crashSource = ctx.createBufferSource();
+      crashSource.buffer = noiseBuffer;
+      
+      const crashFilter = ctx.createBiquadFilter();
+      crashFilter.type = 'highpass';
+      crashFilter.frequency.setValueAtTime(6000, now + 1.5);
+      
+      const crashGain = ctx.createGain();
+      crashGain.gain.setValueAtTime(0, now + 1.5);
+      crashGain.gain.linearRampToValueAtTime(0.08, now + 1.52);
+      crashGain.gain.exponentialRampToValueAtTime(0.001, now + 6.5);
+      
+      crashSource.connect(crashFilter);
+      crashFilter.connect(crashGain);
+      crashGain.connect(masterGain);
+      crashSource.start(now + 1.5);
+
+      // -- ELEMENT E: Detuned Synth Brass Horns (Chord Progression C -> Dm -> Em -> F -> Grand C) --
+      const playBrass = (freq, start, duration, volume = 0.05) => {
+        const oscSaw1 = ctx.createOscillator();
+        const oscSaw2 = ctx.createOscillator();
+        const oscTri = ctx.createOscillator();
+        const filter = ctx.createBiquadFilter();
         const gainNode = ctx.createGain();
         
-        osc.type = 'triangle'; // Warm synth brass tone
-        osc.frequency.setValueAtTime(freq, start);
+        oscSaw1.type = 'sawtooth';
+        oscSaw1.frequency.setValueAtTime(freq, start);
+        oscSaw1.detune.setValueAtTime(-12, start);
         
-        subOsc.type = 'sine'; // Pure base body
-        subOsc.frequency.setValueAtTime(freq, start);
+        oscSaw2.type = 'sawtooth';
+        oscSaw2.frequency.setValueAtTime(freq, start);
+        oscSaw2.detune.setValueAtTime(12, start);
+        
+        oscTri.type = 'triangle';
+        oscTri.frequency.setValueAtTime(freq, start);
+        oscTri.detune.setValueAtTime(0, start);
+        
+        filter.type = 'lowpass';
+        filter.Q.setValueAtTime(1.2, start);
+        filter.frequency.setValueAtTime(freq * 4.0, start);
+        filter.frequency.exponentialRampToValueAtTime(freq * 1.8, start + 0.15);
+        filter.frequency.linearRampToValueAtTime(freq * 1.4, start + duration);
         
         gainNode.gain.setValueAtTime(0, start);
-        gainNode.gain.linearRampToValueAtTime(volume, start + 0.02); // Fast attack for tada pop
+        gainNode.gain.linearRampToValueAtTime(volume, start + 0.04); 
+        gainNode.gain.setValueAtTime(volume, start + duration - 0.12);
         gainNode.gain.exponentialRampToValueAtTime(0.001, start + duration);
         
-        osc.connect(gainNode);
-        subOsc.connect(gainNode);
-        gainNode.connect(ctx.destination);
+        oscSaw1.connect(filter);
+        oscSaw2.connect(filter);
+        oscTri.connect(filter);
+        filter.connect(gainNode);
+        gainNode.connect(masterGain);
         
-        osc.start(start);
-        osc.stop(start + duration);
-        subOsc.start(start);
-        subOsc.stop(start + duration);
+        oscSaw1.start(start);
+        oscSaw1.stop(start + duration);
+        oscSaw2.start(start);
+        oscSaw2.stop(start + duration);
+        oscTri.start(start);
+        oscTri.stop(start + duration);
       };
+
+      // 1.5s: C major triad
+      playBrass(261.63, now + 1.5, 0.25, 0.035); // C4
+      playBrass(329.63, now + 1.5, 0.25, 0.035); // E4
+      playBrass(392.00, now + 1.5, 0.25, 0.035); // G4
       
-      // "Ta-Da!" fanfare timing: G4 -> G4 -> C major chord (longer sustain)
-      playNote(392.00, now, 0.12, 0.04);          // Ta (G4)
-      playNote(392.00, now + 0.12, 0.12, 0.04);   // Da (G4)
+      // 1.8s: D minor triad
+      playBrass(293.66, now + 1.8, 0.25, 0.035); // D4
+      playBrass(349.23, now + 1.8, 0.25, 0.035); // F4
+      playBrass(440.00, now + 1.8, 0.25, 0.035); // A4
       
-      // Congrats Chord! (extended to 4.0s for longer celebratory ring)
-      playNote(523.25, now + 0.24, 4.0, 0.06);    // C5
-      playNote(659.25, now + 0.24, 4.0, 0.04);    // E5
-      playNote(783.99, now + 0.24, 4.0, 0.04);    // G5
-      playNote(1046.50, now + 0.24, 4.0, 0.03);   // C6 (high sparkling bell tone)
+      // 2.1s: E minor triad
+      playBrass(329.63, now + 2.1, 0.25, 0.035); // E4
+      playBrass(392.00, now + 2.1, 0.25, 0.035); // G4
+      playBrass(493.88, now + 2.1, 0.25, 0.035); // B4
+      
+      // 2.4s: F major triad
+      playBrass(349.23, now + 2.4, 0.35, 0.035); // F4
+      playBrass(440.00, now + 2.4, 0.35, 0.035); // A4
+      playBrass(523.25, now + 2.4, 0.35, 0.035); // C5
+      
+      // 2.8s: Grand Final Majestic Chord (Decays over 5.0s)
+      playBrass(392.00, now + 2.8, 5.0, 0.035); // G4
+      playBrass(523.25, now + 2.8, 5.0, 0.045); // C5
+      playBrass(659.25, now + 2.8, 5.0, 0.035); // E5
+      playBrass(783.99, now + 2.8, 5.0, 0.035); // G5
+      playBrass(1046.50, now + 2.8, 5.0, 0.025); // C6
+
+      // -- ELEMENT F: Sparkling Magical Chimes (Sparkle) (3.0s to 7.5s) --
+      const playChime = (freq, start, vol = 0.015) => {
+        const osc1 = ctx.createOscillator();
+        const osc2 = ctx.createOscillator();
+        const gainNode = ctx.createGain();
+        
+        osc1.type = 'sine';
+        osc1.frequency.setValueAtTime(freq, start);
+        
+        osc2.type = 'sine';
+        osc2.frequency.setValueAtTime(freq * 2.52, start); // inharmonic overtone for realistic metal ring
+        
+        gainNode.gain.setValueAtTime(0, start);
+        gainNode.gain.linearRampToValueAtTime(vol, start + 0.01);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, start + 0.4);
+        
+        osc1.connect(gainNode);
+        
+        const overtoneGain = ctx.createGain();
+        overtoneGain.gain.setValueAtTime(0.3, start);
+        osc2.connect(overtoneGain);
+        overtoneGain.connect(gainNode);
+        
+        gainNode.connect(masterGain);
+        
+        osc1.start(start);
+        osc1.stop(start + 0.4);
+        osc2.start(start);
+        osc2.stop(start + 0.4);
+      };
+
+      for (let i = 0; i < 30; i++) {
+        const bellTime = now + 3.0 + i * 0.15;
+        const freq = 2000 - i * 45 + Math.sin(i * 2.0) * 150;
+        playChime(freq, bellTime, 0.015);
+      }
     }
   } catch (e) {
     console.warn("Audio failed", e);
