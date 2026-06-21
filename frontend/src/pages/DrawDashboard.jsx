@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Confetti from 'react-confetti';
-import { ArrowLeft, Calendar, Clock, RotateCcw, Download, Info } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, RotateCcw, Download, Info, Trophy } from 'lucide-react';
 import { MOCK_TEAMS, MOCK_GROUPS, MOCK_SCHEDULE } from '../mockData';
 import * as XLSX from 'xlsx';
 import './DrawDashboard.css';
@@ -194,15 +194,19 @@ const DrawDashboard = () => {
   };
 
   const resetDraw = () => {
-    if (window.confirm('Đặt lại toàn bộ kết quả bốc thăm?')) {
-      setUnassignedTeams(initialTeams);
-      setAvailableSlots(allSlots);
-      setAssigned({});
-      setDrawState('IDLE');
-      setSelectedTeam(null);
-      setSelectedSlot(null);
-      setLastAssignedSlot(null);
-      localStorage.removeItem(`draw_completed_${sport}`);
+    const confirm1 = window.confirm('Bạn có muốn đặt lại toàn bộ kết quả bốc thăm của giải đấu này?');
+    if (confirm1) {
+      const confirm2 = window.confirm('CẢNH BÁO QUAN TRỌNG: Hành động này sẽ XÓA SẠCH toàn bộ kết quả hiện tại và không thể khôi phục! Bạn có thực sự chắc chắn không?');
+      if (confirm2) {
+        setUnassignedTeams(initialTeams);
+        setAvailableSlots(allSlots);
+        setAssigned({});
+        setDrawState('IDLE');
+        setSelectedTeam(null);
+        setSelectedSlot(null);
+        setLastAssignedSlot(null);
+        localStorage.removeItem(`draw_completed_${sport}`);
+      }
     }
   };
 
@@ -249,13 +253,10 @@ const DrawDashboard = () => {
         
         <div className="header-title-wrapper">
           <p className="header-subtitle">Lễ Bốc Thăm Chia Bảng</p>
-          <h1 className="header-title">{sportNames[sport]?.toUpperCase() || 'GIẢI ĐẤU'} - HAMU 2026</h1>
+          <h1 className="header-title">{sportNames[sport]?.toUpperCase() || 'GIẢI ĐẤU'} - HAMU TANRAN 2026</h1>
         </div>
 
         <div className="top-actions">
-          <button className="icon-btn" onClick={exportResults} title="Xuất Excel">
-            <Download size={20} />
-          </button>
           <button className="icon-btn danger" onClick={resetDraw} title="Đặt lại">
             <RotateCcw size={20} />
           </button>
@@ -275,8 +276,19 @@ const DrawDashboard = () => {
           </div>
 
           <div className="arena-body">
-            {drawState === 'IDLE' && (
+            {drawState === 'IDLE' && unassignedTeams.length > 0 && (
               <button className="huge-btn" onClick={handleStartDraw}>BẮT ĐẦU BỐC THĂM</button>
+            )}
+
+            {drawState === 'IDLE' && unassignedTeams.length === 0 && Object.keys(assigned).length > 0 && (
+              <div className="draw-finished-container">
+                <Trophy className="trophy-finished-icon" size={80} />
+                <h2 className="finished-title">BỐC THĂM HOÀN THÀNH</h2>
+                <p className="finished-subtitle">Bảng đấu đã được thiết lập thành công</p>
+                <button className="huge-btn download-btn" onClick={exportResults}>
+                  <Download size={22} className="download-icon" /> TẢI FILE EXCEL
+                </button>
+              </div>
             )}
 
             {drawState === 'RANDOMIZING_TEAM' && (
