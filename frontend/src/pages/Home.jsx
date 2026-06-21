@@ -6,9 +6,7 @@ import './Home.css';
 const Home = () => {
   const navigate = useNavigate();
   const [completedSports, setCompletedSports] = useState({});
-  const [freeDrawMode, setFreeDrawMode] = useState(() => {
-    return localStorage.getItem('free_draw_mode') === 'true';
-  });
+  const [freeDrawMode, setFreeDrawMode] = useState(false);
 
   const sportsOrder = [
     {
@@ -109,11 +107,7 @@ const Home = () => {
   };
 
   const handleToggleFreeDraw = () => {
-    setFreeDrawMode(prev => {
-      const next = !prev;
-      localStorage.setItem('free_draw_mode', String(next));
-      return next;
-    });
+    setFreeDrawMode(prev => !prev);
   };
 
   const handleResetProgress = () => {
