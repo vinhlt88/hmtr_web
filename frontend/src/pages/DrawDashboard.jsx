@@ -345,6 +345,7 @@ const DrawDashboard = () => {
 
   return (
     <div className={`draw-layout dark-theme draw-layout-${sport}`}>
+      {drawState === 'SLOT_REVEALED' && <div className="screen-flash"></div>}
       {/* Ambient background particles & glows */}
       <div className="ambient-glow glow-1"></div>
       <div className="ambient-glow glow-2"></div>
@@ -356,7 +357,7 @@ const DrawDashboard = () => {
         ))}
       </div>
 
-      {drawState === 'SLOT_REVEALED' && <Confetti width={windowDimension.width} height={windowDimension.height} recycle={false} numberOfPieces={300} />}
+      {drawState === 'SLOT_REVEALED' && <Confetti width={windowDimension.width} height={windowDimension.height} recycle={false} numberOfPieces={500} />}
       
       <header className="top-bar">
         <button className="back-btn" onClick={() => navigate('/')}>
@@ -380,7 +381,6 @@ const DrawDashboard = () => {
           <div className="arena-header">
             <span className="arena-status">
               {drawState === 'RANDOMIZING_TEAM' && 'Đang chọn đội...'}
-              {drawState === 'TEAM_REVEALED' && 'Chọn vị trí'}
               {drawState === 'RANDOMIZING_SLOT' && 'Đang bốc thăm...'}
               {drawState === 'SLOT_REVEALED' && 'Kết quả!'}
             </span>

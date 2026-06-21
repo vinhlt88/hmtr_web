@@ -566,7 +566,7 @@
   line-height: 1;
   color: #ffffff;
   gap: 0.05em;
-  animation: tada-pop 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: tada-pop 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 @keyframes tada-pop {
@@ -575,20 +575,21 @@
     opacity: 0;
   }
   15% {
-    transform: scale(1.22) rotate(-6deg);
-    filter: brightness(1.4);
+    transform: scale(1.32) rotate(-8deg);
+    filter: brightness(1.6) drop-shadow(0 0 35px #ffffff);
   }
   30% {
-    transform: scale(0.92) rotate(5deg);
+    transform: scale(0.86) rotate(6deg);
   }
   45% {
-    transform: scale(1.12) rotate(-4deg);
+    transform: scale(1.2) rotate(-5deg);
+    filter: brightness(1.4) drop-shadow(0 0 25px #ffffff);
   }
   60% {
-    transform: scale(0.95) rotate(3deg);
+    transform: scale(0.92) rotate(4deg);
   }
   75% {
-    transform: scale(1.05) rotate(-2deg);
+    transform: scale(1.08) rotate(-2deg);
   }
   90% {
     transform: scale(0.98) rotate(1deg);
@@ -597,6 +598,24 @@
     transform: scale(1) rotate(0);
     opacity: 1;
   }
+}
+
+.screen-flash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #ffffff;
+  z-index: 9999;
+  pointer-events: none;
+  animation: flash-animation 1.0s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes flash-animation {
+  0% { opacity: 0.8; }
+  15% { opacity: 0.95; }
+  100% { opacity: 0; }
 }
 
 .draw-layout-mens_football .slot-result-card {
