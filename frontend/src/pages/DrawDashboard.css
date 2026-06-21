@@ -415,6 +415,7 @@
   display: flex;
   align-items: center;
   gap: 0.8rem;
+  color: #ffffff !important;
 }
 
 .download-btn:hover {
@@ -444,6 +445,7 @@
   box-shadow: 
     0 10px 30px rgba(59, 130, 246, 0.35),
     0 0 0 5px rgba(59, 130, 246, 0.15) !important;
+  color: #ffffff !important;
 }
 
 .home-btn:hover {
