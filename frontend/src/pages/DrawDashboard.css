@@ -63,6 +63,18 @@
   background: radial-gradient(circle, rgba(255, 46, 99, 0.1) 0%, transparent 70%);
 }
 
+/* Badminton specific ambient glows */
+.draw-layout-badminton_male .glow-1,
+.draw-layout-badminton_female .glow-1,
+.draw-layout-badminton_mixed .glow-1 {
+  background: radial-gradient(circle, rgba(255, 190, 11, 0.22) 0%, transparent 70%);
+}
+.draw-layout-badminton_male .glow-2,
+.draw-layout-badminton_female .glow-2,
+.draw-layout-badminton_mixed .glow-2 {
+  background: radial-gradient(circle, rgba(255, 46, 99, 0.1) 0%, transparent 70%);
+}
+
 /* Particles */
 .draw-layout .particles-container {
   position: absolute;
@@ -134,6 +146,12 @@
   filter: drop-shadow(0 2px 10px rgba(0, 240, 255, 0.35));
 }
 
+.draw-layout-badminton_male .header-title,
+.draw-layout-badminton_female .header-title,
+.draw-layout-badminton_mixed .header-title {
+  filter: drop-shadow(0 2px 10px rgba(255, 190, 11, 0.35));
+}
+
 .header-subtitle {
   font-size: 0.8rem;
   color: var(--text-light-muted);
@@ -192,6 +210,15 @@
 .draw-layout-womens_football .back-btn:hover,
 .draw-layout-womens_football .icon-btn:hover {
   box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+}
+
+.draw-layout-badminton_male .back-btn:hover,
+.draw-layout-badminton_male .icon-btn:hover,
+.draw-layout-badminton_female .back-btn:hover,
+.draw-layout-badminton_female .icon-btn:hover,
+.draw-layout-badminton_mixed .back-btn:hover,
+.draw-layout-badminton_mixed .icon-btn:hover {
+  box-shadow: 0 0 12px rgba(255, 190, 11, 0.3);
 }
 
 .icon-btn.danger:hover {
@@ -273,6 +300,17 @@
   animation: pulse-shadow-blue 2.5s infinite;
 }
 
+.draw-layout-badminton_male .huge-btn,
+.draw-layout-badminton_female .huge-btn,
+.draw-layout-badminton_mixed .huge-btn {
+  background: linear-gradient(135deg, var(--neon-gold) 0%, #b58a03 100%);
+  box-shadow: 
+    0 10px 30px rgba(255, 190, 11, 0.35),
+    0 0 0 5px rgba(255, 190, 11, 0.15);
+  color: #0f172a;
+  animation: pulse-shadow-yellow 2.5s infinite;
+}
+
 .huge-btn:hover {
   transform: translateY(-5px) scale(1.02);
 }
@@ -291,6 +329,39 @@
     0 0 0 8px rgba(0, 240, 255, 0.25);
 }
 
+.draw-layout-badminton_male .huge-btn:hover,
+.draw-layout-badminton_female .huge-btn:hover,
+.draw-layout-badminton_mixed .huge-btn:hover {
+  background: linear-gradient(135deg, #ffe375 0%, var(--neon-gold) 100%);
+  box-shadow: 
+    0 15px 40px rgba(255, 190, 11, 0.55),
+    0 0 0 8px rgba(255, 190, 11, 0.25);
+}
+
+/* Arena Glowing borders based on sport */
+.draw-layout-mens_football .draw-arena {
+  border-color: rgba(255, 46, 99, 0.25);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(255, 46, 99, 0.15);
+}
+
+.draw-layout-womens_football .draw-arena {
+  border-color: rgba(0, 240, 255, 0.25);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(0, 240, 255, 0.15);
+}
+
+.draw-layout-badminton_male .draw-arena,
+.draw-layout-badminton_female .draw-arena,
+.draw-layout-badminton_mixed .draw-arena {
+  border-color: rgba(255, 190, 11, 0.25);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(255, 190, 11, 0.15);
+}
+
 .random-text {
   font-size: 5.5rem;
   font-weight: 950;
@@ -298,6 +369,7 @@
   animation: scale-variation 0.1s infinite alternate;
   text-transform: uppercase;
   text-align: center;
+  font-family: 'Outfit', sans-serif;
 }
 
 .draw-layout-mens_football .random-text {
@@ -308,6 +380,13 @@
 .draw-layout-womens_football .random-text {
   color: var(--neon-blue);
   text-shadow: 0 0 25px rgba(0, 240, 255, 0.7);
+}
+
+.draw-layout-badminton_male .random-text,
+.draw-layout-badminton_female .random-text,
+.draw-layout-badminton_mixed .random-text {
+  color: var(--neon-gold);
+  text-shadow: 0 0 25px rgba(255, 190, 11, 0.7);
 }
 
 /* Revealed Card in Arena */
@@ -334,6 +413,15 @@
   box-shadow: 
     0 30px 70px rgba(0, 0, 0, 0.6),
     inset 0 0 30px rgba(0, 240, 255, 0.15);
+}
+
+.draw-layout-badminton_male .revealed-card,
+.draw-layout-badminton_female .revealed-card,
+.draw-layout-badminton_mixed .revealed-card {
+  border: 3px solid rgba(255, 190, 11, 0.6);
+  box-shadow: 
+    0 30px 70px rgba(0, 0, 0, 0.6),
+    inset 0 0 30px rgba(255, 190, 11, 0.15);
 }
 
 .revealed-card::before {
@@ -405,12 +493,25 @@
     inset 0 0 20px rgba(0, 240, 255, 0.2);
 }
 
+.draw-layout-badminton_male .slot-result-card,
+.draw-layout-badminton_female .slot-result-card,
+.draw-layout-badminton_mixed .slot-result-card {
+  border: 6px solid var(--neon-gold);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(255, 190, 11, 0.3),
+    inset 0 0 20px rgba(255, 190, 11, 0.2);
+}
+
 .slot-result-card .group-letter {
   text-shadow: 0 0 15px currentColor;
 }
 
 .draw-layout-mens_football .slot-result-card .group-letter { color: var(--neon-red); }
 .draw-layout-womens_football .slot-result-card .group-letter { color: var(--neon-blue); }
+.draw-layout-badminton_male .slot-result-card .group-letter,
+.draw-layout-badminton_female .slot-result-card .group-letter,
+.draw-layout-badminton_mixed .slot-result-card .group-letter { color: var(--neon-gold); }
 
 .slot-result-card .pos-number {
   color: var(--neon-gold);
@@ -487,12 +588,21 @@
 /* Grid Layout per Sport */
 .groups-grid.sport-mens_football {
   grid-template-columns: repeat(2, 1fr);
-  /* 5 groups total, can wrap nicely */
 }
 
 .groups-grid.sport-womens_football {
   grid-template-columns: 1fr;
-  /* 2 groups total, large view */
+  align-content: center;
+}
+
+/* 4 columns layout for 4 groups in badminton male/female */
+.groups-grid.sport-badminton_male,
+.groups-grid.sport-badminton_female {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.groups-grid.sport-badminton_mixed {
+  grid-template-columns: 1fr;
   align-content: center;
 }
 
@@ -565,15 +675,17 @@
 }
 
 .draw-layout-mens_football .slot-item.newest-assigned {
-  background: rgba(255, 46, 99, 0.15);
-  border-color: var(--neon-red);
-  animation: highlight-pulse-red 2.5s infinite;
+  animation: flash-red-neon 1s infinite ease-in-out;
 }
 
 .draw-layout-womens_football .slot-item.newest-assigned {
-  background: rgba(0, 240, 255, 0.15);
-  border-color: var(--neon-blue);
-  animation: highlight-pulse-blue 2.5s infinite;
+  animation: flash-blue-neon 1s infinite ease-in-out;
+}
+
+.draw-layout-badminton_male .slot-item.newest-assigned,
+.draw-layout-badminton_female .slot-item.newest-assigned,
+.draw-layout-badminton_mixed .slot-item.newest-assigned {
+  animation: flash-gold-neon 1s infinite ease-in-out;
 }
 
 .slot-item.newest-assigned .team-name {
@@ -672,16 +784,69 @@
   }
 }
 
-@keyframes highlight-pulse-red {
-  0% { box-shadow: 0 0 0 0 rgba(255, 46, 99, 0.8); }
-  70% { box-shadow: 0 0 0 15px rgba(255, 46, 99, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(255, 46, 99, 0); }
+@keyframes pulse-shadow-yellow {
+  0%, 100% {
+    box-shadow: 
+      0 10px 30px rgba(255, 190, 11, 0.35),
+      0 0 0 5px rgba(255, 190, 11, 0.15);
+  }
+  50% {
+    box-shadow: 
+      0 12px 40px rgba(255, 190, 11, 0.6),
+      0 0 0 12px rgba(255, 190, 11, 0.3);
+  }
 }
 
-@keyframes highlight-pulse-blue {
-  0% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.8); }
-  70% { box-shadow: 0 0 0 15px rgba(0, 240, 255, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0); }
+/* Flashing animations for the newest assigned slots */
+@keyframes flash-gold-neon {
+  0%, 100% {
+    border-color: rgba(255, 190, 11, 1);
+    box-shadow: 
+      0 0 20px rgba(255, 190, 11, 0.8),
+      inset 0 0 10px rgba(255, 190, 11, 0.4);
+    background: rgba(255, 190, 11, 0.2);
+    color: #ffffff;
+  }
+  50% {
+    border-color: rgba(255, 190, 11, 0.25);
+    box-shadow: none;
+    background: rgba(255, 190, 11, 0.03);
+    color: var(--text-light-muted);
+  }
+}
+
+@keyframes flash-red-neon {
+  0%, 100% {
+    border-color: rgba(255, 46, 99, 1);
+    box-shadow: 
+      0 0 20px rgba(255, 46, 99, 0.8),
+      inset 0 0 10px rgba(255, 46, 99, 0.4);
+    background: rgba(255, 46, 99, 0.2);
+    color: #ffffff;
+  }
+  50% {
+    border-color: rgba(255, 46, 99, 0.25);
+    box-shadow: none;
+    background: rgba(255, 46, 99, 0.03);
+    color: var(--text-light-muted);
+  }
+}
+
+@keyframes flash-blue-neon {
+  0%, 100% {
+    border-color: rgba(0, 240, 255, 1);
+    box-shadow: 
+      0 0 20px rgba(0, 240, 255, 0.8),
+      inset 0 0 10px rgba(0, 240, 255, 0.4);
+    background: rgba(0, 240, 255, 0.2);
+    color: #ffffff;
+  }
+  50% {
+    border-color: rgba(0, 240, 255, 0.25);
+    box-shadow: none;
+    background: rgba(0, 240, 255, 0.03);
+    color: var(--text-light-muted);
+  }
 }
 
 /* TV Friendly Scale for DrawDashboard (1080p, 4K) */

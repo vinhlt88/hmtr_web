@@ -118,50 +118,69 @@ const DrawDashboard = () => {
     initAudio();
     setDrawState('RANDOMIZING_TEAM');
     
-    let counter = 0;
-    const interval = setInterval(() => {
+    const maxSteps = 22;
+    
+    const roll = (currentStep, delay) => {
       const idx = Math.floor(Math.random() * unassignedTeams.length);
-      setDisplayTeam(unassignedTeams[idx]);
+      const team = unassignedTeams[idx];
+      setDisplayTeam(team);
       playSound('click');
-      counter++;
-      if (counter > 15) {
-        clearInterval(interval);
+      
+      if (currentStep < maxSteps) {
+        let nextDelay = 35;
+        if (currentStep > 10) {
+          nextDelay = 35 + Math.pow(currentStep - 10, 1.85) * 9;
+        }
+        setTimeout(() => roll(currentStep + 1, nextDelay), delay);
+      } else {
         const finalIdx = Math.floor(Math.random() * unassignedTeams.length);
-        const team = unassignedTeams[finalIdx];
-        setDisplayTeam(team);
-        setSelectedTeam(team);
+        const finalTeam = unassignedTeams[finalIdx];
+        setDisplayTeam(finalTeam);
+        setSelectedTeam(finalTeam);
         setDrawState('TEAM_REVEALED');
       }
-    }, 100);
+    };
+    
+    roll(0, 35);
   };
 
   const handleDrawSlot = () => {
+    if (availableSlots.length === 0) return;
     initAudio();
     setDrawState('RANDOMIZING_SLOT');
     
-    let counter = 0;
-    const interval = setInterval(() => {
+    const maxSteps = 24;
+    
+    const roll = (currentStep, delay) => {
       const idx = Math.floor(Math.random() * availableSlots.length);
-      setDisplaySlot(availableSlots[idx]);
+      const slot = availableSlots[idx];
+      setDisplaySlot(slot);
       playSound('click');
-      counter++;
-      if (counter > 20) {
-        clearInterval(interval);
+      
+      if (currentStep < maxSteps) {
+        let nextDelay = 35;
+        if (currentStep > 10) {
+          nextDelay = 35 + Math.pow(currentStep - 10, 1.85) * 9;
+        }
+        setTimeout(() => roll(currentStep + 1, nextDelay), delay);
+      } else {
         const finalIdx = Math.floor(Math.random() * availableSlots.length);
-        const slot = availableSlots[finalIdx]; 
+        const finalSlot = availableSlots[finalIdx]; 
         
-        setDisplaySlot(slot);
-        setSelectedSlot(slot);
+        setDisplaySlot(finalSlot);
+        setSelectedSlot(finalSlot);
         
-        setAssigned(prev => ({ ...prev, [slot]: selectedTeam }));
+        setAssigned(prev => ({ ...prev, [finalSlot]: selectedTeam }));
         setUnassignedTeams(prev => prev.filter(t => t.id !== selectedTeam.id));
-        setAvailableSlots(prev => prev.filter(s => s !== slot));
-        setLastAssignedSlot(slot);
+        setAvailableSlots(prev => prev.filter(s => s !== finalSlot));
+        setLastAssignedSlot(finalSlot);
         
         setDrawState('SLOT_REVEALED');
         playSound('reveal');
       }
-    }, 100);
+    };
+    
+    roll(0, 35);
   };
 
   const resetDraw = () => {
