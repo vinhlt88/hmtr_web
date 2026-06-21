@@ -433,6 +433,26 @@
   50% { transform: translateY(-4.5px); }
 }
 
+.finished-actions {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.home-btn {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%) !important;
+  box-shadow: 
+    0 10px 30px rgba(59, 130, 246, 0.35),
+    0 0 0 5px rgba(59, 130, 246, 0.15) !important;
+}
+
+.home-btn:hover {
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%) !important;
+  box-shadow: 
+    0 15px 40px rgba(59, 130, 246, 0.55),
+    0 0 0 8px rgba(59, 130, 246, 0.25) !important;
+}
+
 .draw-layout-mens_football .random-text {
   color: var(--neon-red);
   text-shadow: 0 0 25px rgba(255, 46, 99, 0.7);

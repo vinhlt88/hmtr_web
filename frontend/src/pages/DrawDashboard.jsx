@@ -313,7 +313,6 @@ const DrawDashboard = () => {
         <section className="draw-arena">
           <div className="arena-header">
             <span className="arena-status">
-              {drawState === 'IDLE' && 'Sẵn sàng'}
               {drawState === 'RANDOMIZING_TEAM' && 'Đang chọn đội...'}
               {drawState === 'TEAM_REVEALED' && 'Chọn vị trí'}
               {drawState === 'RANDOMIZING_SLOT' && 'Đang bốc thăm...'}
@@ -331,9 +330,14 @@ const DrawDashboard = () => {
                 <Trophy className="trophy-finished-icon" size={80} />
                 <h2 className="finished-title">BỐC THĂM HOÀN THÀNH</h2>
                 <p className="finished-subtitle">Bảng đấu đã được thiết lập thành công</p>
-                <button className="huge-btn download-btn" onClick={exportResults}>
-                  <Download size={22} className="download-icon" /> TẢI FILE EXCEL
-                </button>
+                <div className="finished-actions">
+                  <button className="huge-btn download-btn" onClick={exportResults}>
+                    <Download size={22} className="download-icon" /> TẢI FILE EXCEL
+                  </button>
+                  <button className="huge-btn home-btn" onClick={() => navigate('/')}>
+                    KẾT THÚC BỐC THĂM
+                  </button>
+                </div>
               </div>
             )}
 
@@ -407,15 +411,22 @@ const DrawDashboard = () => {
       </main>
 
       <footer className="bottom-bar">
-        <span className="bottom-label">
-          {sport.includes('badminton') ? 'CÁC CẶP CHƯA BỐC:' : 'CÁC ĐỘI CHƯA BỐC:'}
-        </span>
-        <div className="pill-container">
-          {unassignedTeams.map(t => (
-            <span key={t.id} className="team-pill">{t.name}</span>
-          ))}
-          {unassignedTeams.length === 0 && <span className="team-pill success">Đã hoàn thành bốc thăm!</span>}
-        </div>
+        {unassignedTeams.length > 0 ? (
+          <>
+            <span className="bottom-label">
+              {sport.includes('badminton') ? 'CÁC CẶP CHƯA BỐC:' : 'CÁC ĐỘI CHƯA BỐC:'}
+            </span>
+            <div className="pill-container">
+              {unassignedTeams.map(t => (
+                <span key={t.id} className="team-pill">{t.name}</span>
+              ))}
+            </div>
+          </>
+        ) : (
+          <div className="pill-container" style={{ justifyContent: 'center' }}>
+            <span className="team-pill success" style={{ margin: '0 auto' }}>Đã hoàn thành bốc thăm!</span>
+          </div>
+        )}
       </footer>
     </div>
   );
