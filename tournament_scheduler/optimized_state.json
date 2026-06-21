@@ -1,0 +1,274 @@
+[
+  {
+    "group": "A",
+    "teams": [
+      "A3",
+      "A4"
+    ],
+    "round": 1
+  },
+  {
+    "group": "A",
+    "teams": [
+      "A5",
+      "A1"
+    ],
+    "round": 2
+  },
+  {
+    "group": "E",
+    "teams": [
+      "E3",
+      "E4"
+    ],
+    "round": 1
+  },
+  {
+    "group": "E",
+    "teams": [
+      "E1",
+      "E2"
+    ],
+    "round": 1
+  },
+  {
+    "group": "A",
+    "teams": [
+      "A1",
+      "A2"
+    ],
+    "round": 1
+  },
+  {
+    "group": "D",
+    "teams": [
+      "D3",
+      "D4"
+    ],
+    "round": 1
+  },
+  {
+    "group": "B",
+    "teams": [
+      "B3",
+      "B4"
+    ],
+    "round": 1
+  },
+  {
+    "group": "B",
+    "teams": [
+      "B1",
+      "B2"
+    ],
+    "round": 1
+  },
+  {
+    "group": "C",
+    "teams": [
+      "C1",
+      "C2"
+    ],
+    "round": 1
+  },
+  {
+    "group": "D",
+    "teams": [
+      "D1",
+      "D2"
+    ],
+    "round": 1
+  },
+  {
+    "group": "C",
+    "teams": [
+      "C3",
+      "C4"
+    ],
+    "round": 1
+  },
+  {
+    "group": "A",
+    "teams": [
+      "A2",
+      "A3"
+    ],
+    "round": 2
+  },
+  {
+    "group": "D",
+    "teams": [
+      "D4",
+      "D2"
+    ],
+    "round": 2
+  },
+  {
+    "group": "D",
+    "teams": [
+      "D3",
+      "D1"
+    ],
+    "round": 2
+  },
+  {
+    "group": "B",
+    "teams": [
+      "B2",
+      "B3"
+    ],
+    "round": 3
+  },
+  {
+    "group": "A",
+    "teams": [
+      "A4",
+      "A5"
+    ],
+    "round": 3
+  },
+  {
+    "group": "E",
+    "teams": [
+      "E3",
+      "E1"
+    ],
+    "round": 2
+  },
+  {
+    "group": "A",
+    "teams": [
+      "A1",
+      "A3"
+    ],
+    "round": 3
+  },
+  {
+    "group": "E",
+    "teams": [
+      "E4",
+      "E2"
+    ],
+    "round": 2
+  },
+  {
+    "group": "B",
+    "teams": [
+      "B4",
+      "B2"
+    ],
+    "round": 2
+  },
+  {
+    "group": "D",
+    "teams": [
+      "D4",
+      "D1"
+    ],
+    "round": 3
+  },
+  {
+    "group": "B",
+    "teams": [
+      "B3",
+      "B1"
+    ],
+    "round": 2
+  },
+  {
+    "group": "A",
+    "teams": [
+      "A5",
+      "A2"
+    ],
+    "round": 4
+  },
+  {
+    "group": "C",
+    "teams": [
+      "C3",
+      "C1"
+    ],
+    "round": 2
+  },
+  {
+    "group": "D",
+    "teams": [
+      "D2",
+      "D3"
+    ],
+    "round": 3
+  },
+  {
+    "group": "C",
+    "teams": [
+      "C4",
+      "C2"
+    ],
+    "round": 2
+  },
+  {
+    "group": "B",
+    "teams": [
+      "B4",
+      "B1"
+    ],
+    "round": 3
+  },
+  {
+    "group": "A",
+    "teams": [
+      "A2",
+      "A4"
+    ],
+    "round": 5
+  },
+  {
+    "group": "C",
+    "teams": [
+      "C4",
+      "C1"
+    ],
+    "round": 3
+  },
+  {
+    "group": "C",
+    "teams": [
+      "C2",
+      "C3"
+    ],
+    "round": 3
+  },
+  {
+    "group": "A",
+    "teams": [
+      "A4",
+      "A1"
+    ],
+    "round": 4
+  },
+  {
+    "group": "E",
+    "teams": [
+      "E4",
+      "E1"
+    ],
+    "round": 3
+  },
+  {
+    "group": "A",
+    "teams": [
+      "A3",
+      "A5"
+    ],
+    "round": 5
+  },
+  {
+    "group": "E",
+    "teams": [
+      "E2",
+      "E3"
+    ],
+    "round": 3
+  }
+]

@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap');
+
+:root {
+  /* Chuyển toàn bộ sang tông sáng (giữ lại để tương thích nếu cần) */
+  --bg-light: #ffffff;
+  --bg-gradient: radial-gradient(circle at center, #ffffff 0%, #f8fafc 100%);
+  --primary: #e51e1e; /* Red Sport */
+  --primary-blue: #2563eb; /* Blue Strong */
+  --secondary: #f1f5f9;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(0, 0, 0, 0.05);
+
+  /* Thêm các biến cao cấp cho Dark Theme lễ hội bốc thăm */
+  --dark-bg: #04060d;
+  --dark-gradient: radial-gradient(circle at center, #0b1124 0%, #030408 100%);
+  --gold: #f5af19;
+  --gold-metallic: linear-gradient(135deg, #ffe57f 0%, #f5af19 50%, #e65c00 100%);
+  --neon-red: #ff2e63;
+  --neon-blue: #00f0ff;
+  --neon-gold: #ffbe0b;
+  --text-light: #f8fafc;
+  --text-light-muted: #94a3b8;
+  --card-active-bg: rgba(13, 18, 36, 0.7);
+  --card-upcoming-bg: rgba(10, 14, 28, 0.4);
+  --border-neon-red: rgba(255, 46, 99, 0.2);
+  --border-neon-blue: rgba(0, 240, 255, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-light);
+  background-image: var(--bg-gradient);
+  color: var(--text-main);
+  height: 100vh;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.app-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
