@@ -32,7 +32,7 @@ for g in "ABCDE":
     
     for i in range(1 << n_days):
         sch = []
-        stats = {f"{g}{k}": {'T1': 0, 'T2': 0} for k in range(1, 6 if g == 'A' else 5)}
+        stats = {f"{g}{k}": {'T1': 0, 'T2': 0} for k in range(1, 5)}
         for j in range(n_days):
             m0, m1 = g_days[j]['matches']
             if (i & (1 << j)):
@@ -47,10 +47,7 @@ for g in "ABCDE":
             
         score = 0
         for t, s in stats.items():
-            if g == 'A':
-                score += abs(s['T1'] - 2) + abs(s['T2'] - 2)
-            else:
-                score += abs(s['T1'] - 1.5) + abs(s['T2'] - 1.5)
+            score += abs(s['T1'] - 1.5) + abs(s['T2'] - 1.5)
                 
         if score < best_score:
             best_score = score

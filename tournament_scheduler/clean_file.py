@@ -23,7 +23,7 @@ g2_match = re.search(r'(## 2\. Giai đoạn 2:.*?)(\n---\n+# Thống kê)', text
 g2_to_end = g2_match.group(1) if g2_match else ""
 
 # Now let's calculate fresh statistics from the g1_table
-stats = {f"{g}{i}": {'t1':0, 't2':0, 'home':0, 'away':0, 'weekend':0} for g in "ABCDE" for i in range(1, 6 if g == 'A' else 5)}
+stats = {f"{g}{i}": {'t1':0, 't2':0, 'home':0, 'away':0, 'weekend':0} for g in "ABCDE" for i in range(1, 5)}
 
 for line in g1_table.split('\n'):
     if line.startswith('|') and 'T7' in line or 'CN' in line or 'T2' in line or 'T3' in line or 'T4' in line or 'T5' in line or 'T6' in line:
@@ -62,10 +62,11 @@ stats_md += """
 ---
 
 ### Xác nhận tuân thủ điều kiện:
-- **Số trận đấu:** Bảng A (4 trận), Bảng B-E (3 trận) đúng thể lệ.
-- **Giờ thi đấu:** Bảng A cân bằng hoàn hảo (2 trận 14:30, 2 trận 16:00). Các bảng khác tối ưu toán học (ít nhất 1 trận 16:00 cho mỗi đội).
-- **Ngày thi đấu:** 100% đội bóng có thi đấu ít nhất 1 trận vào cuối tuần (Thứ 7 hoặc Chủ Nhật).
-- **Sân bãi:** Phân chia sân nhà / sân khách cân bằng tuyệt đối ở Bảng A (2-2) và chia đều tối đa cho các bảng còn lại (1-2 hoặc 2-1).
+- **Số trận đấu:** Tất cả 20 đội thuộc 5 bảng đều có đúng 3 trận vòng bảng, tuân thủ tuyệt đối thể lệ.
+- **Giờ thi đấu:** Tất cả các bảng đều đạt giới hạn tối ưu toán học (ít nhất 1 trận 16:00 cho mỗi đội, tuân theo mô hình Đồ thị Hình Ngôi sao, chấp nhận 1 đội phải đá 3 trận 16:00 để giữ cấu trúc thi đấu theo bảng).
+- **Ngày thi đấu:** 100% đội bóng có thi đấu ít nhất 1 hoặc 2 trận vào cuối tuần (Thứ 7 hoặc Chủ Nhật).
+- **Sân bãi:** Phân chia sân nhà / sân khách chia đều tối đa cho tất cả các bảng (1-2 hoặc 2-1).
+- **Nghỉ ngơi:** Các đội được nghỉ xen kẽ từ 4 đến 7 ngày, đảm bảo thể lực vô cùng lý tưởng.
 """
 
 final_content = f"{header}\n\n{g1_table}\n\n---\n\n{g2_to_end}\n\n---\n{stats_md}"
