@@ -52,10 +52,14 @@ for t, m_list in team_matches.items():
     s.add(Or([Or([D[m] == w for w in weekends]) for m in m_list]))
 
 # 16:00 constraint (T[i] == 1)
-# Each team must have 1 or 2 matches at 16:00
 for t, m_list in team_matches.items():
-    s.add(Sum([T[m] for m in m_list]) >= 1)
-    s.add(Sum([T[m] for m in m_list]) <= 2)
+    if t.startswith('A') or t.startswith('B') or t.startswith('C'):
+        # Bảng 5 đội phải cân bằng đúng 2 trận lúc 16:00
+        s.add(Sum([T[m] for m in m_list]) == 2)
+    else:
+        # Bảng D (4 đội) sẽ nhận các suất còn lại (từ 1 đến 2 trận)
+        s.add(Sum([T[m] for m in m_list]) >= 1)
+        s.add(Sum([T[m] for m in m_list]) <= 2)
 
 print("Solving...")
 if s.check() == sat:
