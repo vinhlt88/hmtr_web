@@ -72,20 +72,23 @@ export const MOCK_TEAMS = {
     { id: 'bx10', name: 'Khoá 2011' }
   ],
   volleyball_male: [
-    { id: 'vm1', name: 'Bóng Chuyền K05' },
-    { id: 'vm2', name: 'Bóng Chuyền K09' },
-    { id: 'vm3', name: 'Bóng Chuyền K12' },
-    { id: 'vm4', name: 'Bóng Chuyền K15' },
-    { id: 'vm5', name: 'Bóng Chuyền Tân Đức' },
-    { id: 'vm6', name: 'Bóng Chuyền Khối 11' }
+    { id: 'vm1', name: 'Khoá 2012' },
+    { id: 'vm2', name: 'Khoá 2005' },
+    { id: 'vm3', name: 'Khoá 2009' },
+    { id: 'vm4', name: 'Khoá 2010' },
+    { id: 'vm5', name: 'Khoá 2019' },
+    { id: 'vm6', name: 'Khoá 2024' },
+    { id: 'vm7', name: 'Khoá 2011' },
+    { id: 'vm8', name: 'Khoá 2026' }
   ],
   volleyball_female: [
-    { id: 'vf1', name: 'BC Nữ Khoá 08' },
-    { id: 'vf2', name: 'BC Nữ Khoá 10' },
-    { id: 'vf3', name: 'BC Nữ Khoá 13' },
-    { id: 'vf4', name: 'BC Nữ Khoá 16' },
-    { id: 'vf5', name: 'BC Nữ Tân Đức' },
-    { id: 'vf6', name: 'BC Nữ Khối 11' }
+    { id: 'vf1', name: 'Khoá 2012' },
+    { id: 'vf2', name: 'Khoá 2009' },
+    { id: 'vf3', name: 'Khoá 2010' },
+    { id: 'vf4', name: 'Khoá 2013' },
+    { id: 'vf5', name: 'Khoá 2017' },
+    { id: 'vf6', name: 'Khoá 2026' },
+    { id: 'vf7', name: 'Khoá 2005' }
   ]
 };
 
@@ -116,11 +119,11 @@ export const MOCK_GROUPS = {
     { id: 'B', name: 'Bảng B', capacity: 5 }
   ],
   volleyball_male: [
-    { id: 'A', name: 'Bảng A', capacity: 3 },
-    { id: 'B', name: 'Bảng B', capacity: 3 }
+    { id: 'A', name: 'Bảng A', capacity: 4 },
+    { id: 'B', name: 'Bảng B', capacity: 4 }
   ],
   volleyball_female: [
-    { id: 'A', name: 'Bảng A', capacity: 3 },
+    { id: 'A', name: 'Bảng A', capacity: 4 },
     { id: 'B', name: 'Bảng B', capacity: 3 }
   ]
 };

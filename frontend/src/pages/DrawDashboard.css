@@ -75,6 +75,16 @@
   background: radial-gradient(circle, rgba(255, 46, 99, 0.1) 0%, transparent 70%);
 }
 
+/* Volleyball specific ambient glows */
+.draw-layout-volleyball_male .glow-1,
+.draw-layout-volleyball_female .glow-1 {
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.22) 0%, transparent 70%);
+}
+.draw-layout-volleyball_male .glow-2,
+.draw-layout-volleyball_female .glow-2 {
+  background: radial-gradient(circle, rgba(255, 46, 99, 0.1) 0%, transparent 70%);
+}
+
 /* Particles */
 .draw-layout .particles-container {
   position: absolute;
@@ -152,6 +162,11 @@
   filter: drop-shadow(0 2px 10px rgba(255, 190, 11, 0.35));
 }
 
+.draw-layout-volleyball_male .header-title,
+.draw-layout-volleyball_female .header-title {
+  filter: drop-shadow(0 2px 10px rgba(249, 115, 22, 0.35));
+}
+
 .header-subtitle {
   font-size: 0.75rem;
   color: var(--text-light-muted);
@@ -219,6 +234,13 @@
 .draw-layout-badminton_mixed .back-btn:hover,
 .draw-layout-badminton_mixed .icon-btn:hover {
   box-shadow: 0 0 12px rgba(255, 190, 11, 0.3);
+}
+
+.draw-layout-volleyball_male .back-btn:hover,
+.draw-layout-volleyball_male .icon-btn:hover,
+.draw-layout-volleyball_female .back-btn:hover,
+.draw-layout-volleyball_female .icon-btn:hover {
+  box-shadow: 0 0 12px rgba(249, 115, 22, 0.3);
 }
 
 .icon-btn.danger:hover {
@@ -311,6 +333,15 @@
   animation: pulse-shadow-yellow 2.5s infinite;
 }
 
+.draw-layout-volleyball_male .huge-btn,
+.draw-layout-volleyball_female .huge-btn {
+  background: linear-gradient(135deg, #f97316 0%, #c2410c 100%);
+  box-shadow: 
+    0 10px 30px rgba(249, 115, 22, 0.35),
+    0 0 0 5px rgba(249, 115, 22, 0.15);
+  animation: pulse-shadow-orange 2.5s infinite;
+}
+
 .huge-btn:hover {
   transform: translateY(-5px) scale(1.02);
 }
@@ -338,6 +369,14 @@
     0 0 0 8px rgba(255, 190, 11, 0.25);
 }
 
+.draw-layout-volleyball_male .huge-btn:hover,
+.draw-layout-volleyball_female .huge-btn:hover {
+  background: linear-gradient(135deg, #ff9e59 0%, #f97316 100%);
+  box-shadow: 
+    0 15px 40px rgba(249, 115, 22, 0.55),
+    0 0 0 8px rgba(249, 115, 22, 0.25);
+}
+
 /* Arena Glowing borders based on sport */
 .draw-layout-mens_football .draw-arena {
   border-color: rgba(255, 46, 99, 0.25);
@@ -360,6 +399,14 @@
   box-shadow: 
     0 20px 50px rgba(0, 0, 0, 0.5),
     0 0 30px rgba(255, 190, 11, 0.15);
+}
+
+.draw-layout-volleyball_male .draw-arena,
+.draw-layout-volleyball_female .draw-arena {
+  border-color: rgba(249, 115, 22, 0.25);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(249, 115, 22, 0.15);
 }
 
 .random-text {
@@ -644,6 +691,15 @@
     inset 0 0 20px rgba(255, 190, 11, 0.2);
 }
 
+.draw-layout-volleyball_male .slot-result-card,
+.draw-layout-volleyball_female .slot-result-card {
+  border: 6px solid #f97316;
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(249, 115, 22, 0.3),
+    inset 0 0 20px rgba(249, 115, 22, 0.2);
+}
+
 .slot-result-card .group-letter {
   text-shadow: 0 0 15px currentColor;
 }
@@ -653,6 +709,8 @@
 .draw-layout-badminton_male .slot-result-card .group-letter,
 .draw-layout-badminton_female .slot-result-card .group-letter,
 .draw-layout-badminton_mixed .slot-result-card .group-letter { color: var(--neon-gold); }
+.draw-layout-volleyball_male .slot-result-card .group-letter,
+.draw-layout-volleyball_female .slot-result-card .group-letter { color: #f97316; }
 
 .slot-result-card .pos-number {
   color: var(--neon-gold);
@@ -817,6 +875,11 @@
   animation: flash-gold-neon 1s infinite ease-in-out;
 }
 
+.draw-layout-volleyball_male .slot-item.newest-assigned,
+.draw-layout-volleyball_female .slot-item.newest-assigned {
+  animation: flash-orange-neon 1s infinite ease-in-out;
+}
+
 .slot-item.newest-assigned .team-name {
   color: #ffffff;
 }
@@ -974,6 +1037,36 @@
     border-color: rgba(0, 240, 255, 0.25);
     box-shadow: none;
     background: rgba(0, 240, 255, 0.03);
+    color: var(--text-light-muted);
+  }
+}
+
+@keyframes pulse-shadow-orange {
+  0%, 100% {
+    box-shadow: 
+      0 10px 30px rgba(249, 115, 22, 0.35),
+      0 0 0 5px rgba(249, 115, 22, 0.15);
+  }
+  50% {
+    box-shadow: 
+      0 12px 40px rgba(249, 115, 22, 0.6),
+      0 0 0 12px rgba(249, 115, 22, 0.3);
+  }
+}
+
+@keyframes flash-orange-neon {
+  0%, 100% {
+    border-color: rgba(249, 115, 22, 1);
+    box-shadow: 
+      0 0 20px rgba(249, 115, 22, 0.8),
+      inset 0 0 10px rgba(249, 115, 22, 0.4);
+    background: rgba(249, 115, 22, 0.2);
+    color: #ffffff;
+  }
+  50% {
+    border-color: rgba(249, 115, 22, 0.25);
+    box-shadow: none;
+    background: rgba(249, 115, 22, 0.03);
     color: var(--text-light-muted);
   }
 }

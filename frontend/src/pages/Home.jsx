@@ -39,7 +39,7 @@ const Home = () => {
     {
       id: 'volleyball_male',
       name: 'Bóng Chuyền Nam',
-      desc: '6 Đội • 2 Bảng',
+      desc: '8 Đội • 2 Bảng',
       icon: <Volleyball size={36} />,
       accent: 'orange',
       category: 'volleyball',
@@ -48,7 +48,7 @@ const Home = () => {
     {
       id: 'volleyball_female',
       name: 'Bóng Chuyền Nữ',
-      desc: '6 Đội • 2 Bảng',
+      desc: '7 Đội • 2 Bảng',
       icon: <Volleyball size={36} />,
       accent: 'orange',
       category: 'volleyball',
