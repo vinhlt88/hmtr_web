@@ -73,6 +73,11 @@ def try_solve(max_rest_limit):
             s.add(Sum([T[m] for m in m_list]) >= 1)
             s.add(Sum([T[m] for m in m_list]) <= 2)
 
+    # Early start constraint
+    # Every team must play its first match within the first 6 days (index <= 5)
+    for t, m_list in team_matches.items():
+        s.add(Or([D[m] <= 5 for m in m_list]))
+
     res = s.check()
     if res == sat:
         print("SAT!")
