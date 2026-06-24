@@ -771,16 +771,16 @@
 
 /* Custom layout based on sport group counts to avoid scrolling */
 
-/* 5 Groups (Football Men) -> 3 Columns grid */
-.groups-grid.sport-mens_football {
-  grid-template-columns: repeat(3, 1fr);
-  align-content: start;
-}
-
 /* 4 Groups (Badminton Male) -> 2 Columns grid */
 .groups-grid.sport-badminton_male {
   grid-template-columns: repeat(2, 1fr);
   align-content: start;
+}
+
+/* 4 Groups (Football Men) -> 4 Columns grid to fit 5 slots on TV screen without cutoff */
+.groups-grid.sport-mens_football {
+  grid-template-columns: repeat(4, 1fr);
+  align-content: center;
 }
 
 /* 2 Groups (Football Women, Volleyball Male/Female, Badminton Mixed, Badminton Female) -> 2 Columns grid */
@@ -830,6 +830,22 @@
   font-weight: 700;
   border: 1px solid rgba(255, 255, 255, 0.03);
   color: var(--text-light-muted);
+}
+
+/* Compact styling for mens_football to fit 5 slots on TV screen without cutoff */
+.sport-mens_football .group-slots {
+  padding: 0.4rem;
+  gap: 3px;
+}
+
+.sport-mens_football .slot-item {
+  padding: 0.25rem 0.6rem;
+  font-size: 0.8rem;
+}
+
+.sport-mens_football .group-header {
+  padding: 0.35rem;
+  font-size: 0.9rem;
 }
 
 .slot-item .slot-id {

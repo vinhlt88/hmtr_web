@@ -66,7 +66,7 @@ const Home = () => {
     {
       id: 'mens_football',
       name: 'Bóng Đá Nam',
-      desc: '20 Đội • 5 Bảng',
+      desc: '19 Đội • 4 Bảng',
       icon: <Trophy size={40} />,
       accent: 'red',
       category: 'football',

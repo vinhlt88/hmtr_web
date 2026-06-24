@@ -6,8 +6,8 @@ export const MOCK_TEAMS = {
     { id: 'm4', name: 'Khoá 2009' },
     { id: 'm5', name: 'Khoá 2010' },
     { id: 'm6', name: 'Khoá 2011' },
-    { id: 'm7', name: 'Khoá 2013' },
-    { id: 'm8', name: 'Khoá 2014' },
+    { id: 'm7', name: 'Khoá 2014' },
+    { id: 'm8', name: 'Khoá 2015' },
     { id: 'm9', name: 'Khoá 2016' },
     { id: 'm10', name: 'Khoá 2017' },
     { id: 'm11', name: 'Khoá 2018' },
@@ -17,9 +17,8 @@ export const MOCK_TEAMS = {
     { id: 'm15', name: 'Khoá 2024' },
     { id: 'm16', name: 'Khoá 2025' },
     { id: 'm17', name: 'Khoá 2026' },
-    { id: 'm18', name: 'Trung Tân Đức' },
-    { id: 'm19', name: 'Nam Tân Đức' },
-    { id: 'm20', name: 'Khối 11' },
+    { id: 'm18', name: 'Nam Tân Đức' },
+    { id: 'm19', name: 'Khối 11' }
   ],
   womens_football: [
     { id: 'w1', name: 'Khoá 2006' },
@@ -94,11 +93,10 @@ export const MOCK_TEAMS = {
 
 export const MOCK_GROUPS = {
   mens_football: [
-    { id: 'A', name: 'Bảng A', capacity: 4 },
-    { id: 'B', name: 'Bảng B', capacity: 4 },
-    { id: 'C', name: 'Bảng C', capacity: 4 },
-    { id: 'D', name: 'Bảng D', capacity: 4 },
-    { id: 'E', name: 'Bảng E', capacity: 4 },
+    { id: 'A', name: 'Bảng A', capacity: 5 },
+    { id: 'B', name: 'Bảng B', capacity: 5 },
+    { id: 'C', name: 'Bảng C', capacity: 5 },
+    { id: 'D', name: 'Bảng D', capacity: 4 }
   ],
   womens_football: [
     { id: 'A', name: 'Bảng A', capacity: 6 },
