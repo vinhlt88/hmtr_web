@@ -21,7 +21,7 @@ const Home = () => {
     {
       id: 'badminton_female',
       name: 'Cầu Lông - Đôi Nữ',
-      desc: '9 Đôi • 2 Bảng',
+      desc: '8 Đôi • 2 Bảng',
       icon: <Activity size={36} />,
       accent: 'yellow',
       category: 'badminton',

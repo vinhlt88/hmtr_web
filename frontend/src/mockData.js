@@ -53,10 +53,9 @@ export const MOCK_TEAMS = {
     { id: 'bf3', name: 'Khóa 2007' },
     { id: 'bf4', name: 'FC Chị Em - Hữu Đức' },
     { id: 'bf5', name: 'Khoá 2026' },
-    { id: 'bf6', name: 'Khoá 2010' },
-    { id: 'bf7', name: 'Khoá 2012' },
-    { id: 'bf8', name: 'Khoá 2018' },
-    { id: 'bf9', name: 'Khoá 2009' }
+    { id: 'bf6', name: 'Khoá 2012' },
+    { id: 'bf7', name: 'Khoá 2018' },
+    { id: 'bf8', name: 'Khoá 2009' }
   ],
   badminton_mixed: [
     { id: 'bx1', name: 'GG Team - Thành Đức - Đôi 1' },
@@ -109,7 +108,7 @@ export const MOCK_GROUPS = {
     { id: 'D', name: 'Bảng D', capacity: 3 }
   ],
   badminton_female: [
-    { id: 'A', name: 'Bảng A', capacity: 5 },
+    { id: 'A', name: 'Bảng A', capacity: 4 },
     { id: 'B', name: 'Bảng B', capacity: 4 }
   ],
   badminton_mixed: [
