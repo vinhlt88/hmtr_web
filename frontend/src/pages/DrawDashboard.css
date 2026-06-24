@@ -719,10 +719,15 @@
   align-content: start;
 }
 
-/* 4 Groups (Badminton Male/Female) -> 2 Columns grid */
-.groups-grid.sport-badminton_male,
-.groups-grid.sport-badminton_female {
+/* 4 Groups (Badminton Male) -> 2 Columns grid */
+.groups-grid.sport-badminton_male {
   grid-template-columns: repeat(2, 1fr);
+  align-content: start;
+}
+
+/* 3 Groups (Badminton Female) -> 3 Columns grid */
+.groups-grid.sport-badminton_female {
+  grid-template-columns: repeat(3, 1fr);
   align-content: start;
 }
 
