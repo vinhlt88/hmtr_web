@@ -725,15 +725,10 @@
   align-content: start;
 }
 
-/* 3 Groups (Badminton Female) -> 3 Columns grid */
-.groups-grid.sport-badminton_female {
-  grid-template-columns: repeat(3, 1fr);
-  align-content: start;
-}
-
-/* 2 Groups (Football Women, Volleyball Male/Female, Badminton Mixed) -> 2 Columns grid */
+/* 2 Groups (Football Women, Volleyball Male/Female, Badminton Mixed, Badminton Female) -> 2 Columns grid */
 .groups-grid.sport-womens_football,
 .groups-grid.sport-badminton_mixed,
+.groups-grid.sport-badminton_female,
 .groups-grid.sport-volleyball_male,
 .groups-grid.sport-volleyball_female {
   grid-template-columns: repeat(2, 1fr);

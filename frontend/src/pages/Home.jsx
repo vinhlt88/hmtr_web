@@ -12,7 +12,7 @@ const Home = () => {
     {
       id: 'badminton_male',
       name: 'Cầu Lông - Đôi Nam',
-      desc: '12 Cặp • 4 Bảng',
+      desc: '12 Đôi • 4 Bảng',
       icon: <Activity size={36} />,
       accent: 'yellow',
       category: 'badminton',
@@ -20,8 +20,8 @@ const Home = () => {
     },
     {
       id: 'badminton_female',
-      name: 'CẦU LÔNG - ĐÔI NỮ',
-      desc: '9 Cặp • 3 Bảng',
+      name: 'Cầu Lông - Đôi Nữ',
+      desc: '9 Đôi • 2 Bảng',
       icon: <Activity size={36} />,
       accent: 'yellow',
       category: 'badminton',
@@ -30,7 +30,7 @@ const Home = () => {
     {
       id: 'badminton_mixed',
       name: 'Cầu Lông - Đôi Nam Nữ',
-      desc: '10 Cặp • 2 Bảng',
+      desc: '10 Đôi • 2 Bảng',
       icon: <Activity size={36} />,
       accent: 'yellow',
       category: 'badminton',

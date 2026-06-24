@@ -108,9 +108,8 @@ export const MOCK_GROUPS = {
     { id: 'D', name: 'Bảng D', capacity: 3 }
   ],
   badminton_female: [
-    { id: 'A', name: 'Bảng A', capacity: 3 },
-    { id: 'B', name: 'Bảng B', capacity: 3 },
-    { id: 'C', name: 'Bảng C', capacity: 3 }
+    { id: 'A', name: 'Bảng A', capacity: 5 },
+    { id: 'B', name: 'Bảng B', capacity: 4 }
   ],
   badminton_mixed: [
     { id: 'A', name: 'Bảng A', capacity: 5 },
